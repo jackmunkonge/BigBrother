@@ -1,25 +1,6 @@
 {
   "name": "angular-electron",
   "version": "8.0.5",
-  "description": "Angular 10 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
-  "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
-  },
-  "keywords": [
-    "angular",
-    "angular 10",
-    "electron",
-    "nodejs",
-    "typescript",
-    "spectron",
-    "eslint",
-    "sass",
-    "windows",
-    "mac",
-    "linux"
-  ],
   "main": "main.js",
   "private": true,
   "scripts": {
@@ -67,6 +48,7 @@
     "@typescript-eslint/eslint-plugin-tslint": "4.2.0",
     "@typescript-eslint/parser": "4.2.0",
     "chai": "4.2.0",
+    "codelyzer": "^6.0.0",
     "conventional-changelog-cli": "2.1.0",
     "core-js": "3.6.5",
     "cross-env": "7.0.2",
@@ -98,8 +80,16 @@
   },
   "dependencies": {
     "@angular/animations": "10.2.2",
+    "@angular/cdk": "~10.0.2",
     "primeflex": "2.0.0",
     "primeicons": "4.0.0",
-    "primeng": "10.0.3"
+    "primeng": "10.0.3",
+    "prismjs": "1.20.0",
+    "web-animations-js": "^2.3.2",
+    "@fullcalendar/core": "4.0.2",
+    "@fullcalendar/daygrid": "4.0.1",
+    "@fullcalendar/interaction": "4.0.2",
+    "@fullcalendar/timegrid": "4.0.1",
+    "chart.js": "2.7.3"
   }
 }

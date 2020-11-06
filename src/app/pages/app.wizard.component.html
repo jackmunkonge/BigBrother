@@ -1,0 +1,275 @@
+<body class="wizard-body">
+<div class="wizard-wrapper">
+    <div class="wizard-header">
+        <div class="wizard-logo">
+            <img src="assets/layout/images/logo-black.png" alt="babylon-layout"/>
+        </div>
+    </div>
+
+    <div class="wizard-content">
+        <div class="wizard-card">
+            <div class="wizard-card-header">
+                <div class="wizard-card-header-banner">
+                    <div class="banner-logo">
+                        <img src="assets/layout/images/extensions/babylon-icon.png" alt="babylon-layout"/>
+                    </div>
+                    <div class="banner-image banner-1" [ngClass]="{' active-banner': activeTab === 'register'}">
+                        <h1>Create a Babylon Account</h1>
+                        <img src="assets/layout/images/extensions/bg-header.png" alt="babylon-layout"/>
+                    </div>
+                    <div class="banner-image banner-2" [ngClass]="{' active-banner': activeTab === 'tier'}">
+                        <h1>Choose Your Account Type</h1>
+                        <img src="assets/layout/images/extensions/bg-header-2.png" alt="babylon-layout"/>
+                    </div>
+                    <div class="banner-image banner-3" [ngClass]="{' active-banner': activeTab === 'payment'}">
+                        <h1>Complete Your Registration with Payment</h1>
+                        <img src="assets/layout/images/extensions/bg-header-3.png" alt="babylon-layout"/>
+                    </div>
+                </div>
+                <div class="wizard-card-tabs">
+                    <div class="wizard-card-tab register-tab" [ngClass]="{'selected-tab': activeTab === 'register'}"
+                         (click)="clickNext('register')">
+                        REGISTER
+                    </div>
+                    <div class="wizard-card-tab tier-tab" [ngClass]="{'selected-tab': activeTab === 'tier'}"
+                         (click)="clickNext('tier')">
+                        CHOOSE TIER
+                    </div>
+                    <div class="wizard-card-tab payment-tab" [ngClass]="{'selected-tab': activeTab === 'payment'}"
+                         (click)="clickNext('payment')">
+                        PAYMENT
+                    </div>
+                </div>
+            </div>
+
+            <div class="wizard-card-content register" [ngClass]="{'active-content': activeTab === 'register'}">
+                <div class="warning">
+                    <i class="pi pi-exclamation-circle"></i>
+                    <p>You must have an account to complete your order and manage your downloads.</p>
+                </div>
+
+                <div class="wizard-forms-wrapper p-grid p-nogutter">
+                    <div class="p-col-12 p-md-6 wizard-forms">
+                        <label for="username" class="form-label">Enter Username</label>
+                        <input id="username" type="text" pInputText/>
+
+                        <label for="email" class="form-label">Enter Email</label>
+                        <input id="email" type="text" pInputText/>
+
+                        <label for="password" class="form-label">Enter Password</label>
+                        <input id="password" type="password" pInputText/>
+                    </div>
+
+                    <div class="p-col-12 p-md-6 wizard-forms">
+                        <label for="timezone" class="form-label">Select Timezone</label>
+                        <p-dropdown id="timezone" [style]="{'margin-bottom':'10px'}" [options]="dropdownOptions1"
+                                    [(ngModel)]="selectDropdownOptions1"></p-dropdown>
+
+                        <div class="calendar">
+                            <label for="birthdate" class="form-label"></label>
+                            <p-calendar id="birthdate" [(ngModel)]="birthdate" appendTo="body"></p-calendar>
+                        </div>
+
+                        <label for="babylon" class="form-label">Where did you hear Babylon?</label>
+                        <p-dropdown id="babylon" [options]="dropdownOptions2" [(ngModel)]="selectDropdownOptions2"
+                                    appendTo="body" [style]="{'margin-bottom':'10px'}"></p-dropdown>
+                    </div>
+                </div>
+
+                <div class="wizard-button">
+                    <button pButton class="continue-button" type="button" label="CONTINUE"
+                            (click)="clickNext('tier')"></button>
+                </div>
+            </div>
+
+            <div class="wizard-card-content tier" [ngClass]="{'active-content': activeTab === 'tier'}">
+                <div class="wizard-tier-cards p-grid ">
+                    <div class="p-col-12 p-md-4 ">
+                        <div class="wizard-tier-card beginner" [ngClass]="{'active-tier-card': activeCard === 'basic'}"
+                             (click)="selectTier('basic')">
+                            <div class="wizard-tier-card-header">
+                                <img src="assets/layout/images/extensions/asset-beginner.png" alt="babylon-layout"/>
+                            </div>
+                            <div class="wizard-tier-card-content">
+                                <div class="title">
+                                    <h1>Beginner</h1>
+                                    <span>Starting from $5 per month</span>
+                                </div>
+                                <ul>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Responsive</p>
+                                    </li>
+                                    <li>
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Push Notifications</p>
+                                    </li>
+                                    <li>
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>7/24 Support</p>
+                                    </li>
+                                    <li>
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Unlimited Space</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-4 ">
+                        <div class="wizard-tier-card professional"
+                             [ngClass]="{'active-tier-card': activeCard === 'professional'}"
+                             (click)="selectTier('professional')">
+                            <div class="wizard-tier-card-header">
+                                <img src="assets/layout/images/extensions/asset-pro.png" alt="babylon-layout"/>
+                            </div>
+                            <div class="wizard-tier-card-content">
+                                <div class="title">
+                                    <h1>Professional</h1>
+                                    <span>Starting from $10 per month</span>
+                                </div>
+                                <ul>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Responsive</p>
+                                    </li>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Push Notifications</p>
+                                    </li>
+                                    <li>
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>7/24 Support</p>
+                                    </li>
+                                    <li>
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Unlimited Space</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-4 ">
+                        <div class="wizard-tier-card enterprise"
+                             [ngClass]="{'active-tier-card': activeCard === 'enterprise'}"
+                             (click)="selectTier('enterprise')">
+                            <div class="wizard-tier-card-header">
+                                <img src="assets/layout/images/extensions/asset-enterprise.png" alt="babylon-layout"/>
+                            </div>
+                            <div class="wizard-tier-card-content">
+                                <div class="title">
+                                    <h1>Enterprise</h1>
+                                    <span>Starting from $20 per month</span>
+                                </div>
+                                <ul>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Responsive</p>
+                                    </li>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Push Notifications</p>
+                                    </li>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>7/24 Support</p>
+                                    </li>
+                                    <li class="active-list-item">
+                                        <i class="pi pi-check-circle"></i>
+                                        <p>Unlimited Space</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-button">
+                    <button pButton class="continue-button" type="button" label="CONTINUE"
+                            (click)="clickNext('payment')"></button>
+                </div>
+            </div>
+
+            <div class="wizard-card-content payment" [ngClass]="{'active-content': activeTab === 'payment'}">
+                <div class="wizard-forms-wrapper">
+                    <div class="wizard-forms ">
+                        <div class="customPanel p-grid">
+                            <div class="p-col-1 p-lg-1 p-md-1" style="line-height: 2em">
+                                <p-radioButton name="group1" value="Credit" [(ngModel)]="radioButton1"
+                                               inputId="credit"></p-radioButton>
+                            </div>
+                            <div class="p-col-11 p-lg-5 p-md-5">
+                                <div class="credits">
+                                    <img src="assets/layout/images/extensions/asset-mastercard.png"
+                                         alt="babylon-layout"/>
+                                    <img src="assets/layout/images/extensions/asset-visa.png" alt="babylon-layout"/>
+                                    <img src="assets/layout/images/extensions/asset-amex.png" alt="babylon-layout"/>
+                                </div>
+                            </div>
+                            <div class="p-col-1 p-lg-1 p-md-1" style="line-height: 2em">
+
+                                <p-radioButton name="group1" value="Paypal" [(ngModel)]="radioButton1"
+                                               inputId="paypal"></p-radioButton>
+                            </div>
+                            <div class="p-col-11 p-lg-5 p-md-5">
+                                <div class="paypal">
+                                    <img src="assets/layout/images/extensions/asset-paypal.png" alt="babylon-layout"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label for="name" class="form-label">Cardholder Name</label>
+                        <input id="name" pInputText type="text">
+
+                        <div class="numbers p-grid">
+                            <div class="p-col-12 p-md-6">
+                                <label for="number" class="form-label">Cardholder Number</label>
+                                <p-inputMask mask="9999-9999-9999-9999"></p-inputMask>
+                            </div>
+                            <div class="p-col-6 p-md-3">
+                                <label for="date" class="form-label">Date</label>
+                                <p-inputMask mask="99/99"></p-inputMask>
+                            </div>
+                            <div class="p-col-6 p-md-3">
+                                <label for="ccv" class="form-label">CCV</label>
+                                <p-inputMask mask="999"></p-inputMask>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px">
+                            <p-checkbox [(ngModel)]="checked" binary="true"
+                                        label="Save credit card information for future usage"></p-checkbox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-button">
+                    <div class="order-summary order-default" [ngClass]="{'selected-order': activeCard === ''}">
+                        <p>ORDER SUMMARY</p>
+                        <h1>$00.00</h1>
+                        <span>Please select one tier.</span>
+                    </div>
+                    <div class="order-summary order-beginner" [ngClass]="{'selected-order': activeCard === 'basic'}">
+                        <p>ORDER SUMMARY</p>
+                        <h1>$5.00</h1>
+                        <span>Babylon Beginner Membership.</span>
+                    </div>
+                    <div class="order-summary order-professional"
+                         [ngClass]="{'selected-order': activeCard === 'professional'}">
+                        <p>ORDER SUMMARY</p>
+                        <h1>$10.00</h1>
+                        <span>Babylon Professional Membership.</span>
+                    </div>
+                    <div class="order-summary order-enterprise"
+                         [ngClass]="{'selected-order': activeCard === 'enterprise'}">
+                        <p>ORDER SUMMARY</p>
+                        <h1>$20.00</h1>
+                        <span>Babylon Enterprise Membership.</span>
+                    </div>
+                    <p-button type="button" label="COMPLETE ORDER"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

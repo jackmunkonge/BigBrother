@@ -1,0 +1,22 @@
+<div class="login-body">
+    <div class="login-panel"></div>
+
+    <div class="login-content">
+        <img src="assets/layout/images/logo-black.png" alt="babylon-layout"/>
+
+        <h1><span>SIGN IN</span> TO BABYLON</h1>
+        <p>Welcome, please use the form to sign-in.</p>
+
+        <div class="login-input-wrapper">
+            <input type="text" autocomplete="off" placeholder="Username" pInputText>
+            <i class="pi pi-user"></i>
+        </div>
+
+        <div class="login-input-wrapper">
+            <input type="password" autocomplete="off" placeholder="Password" pInputText>
+            <i class="pi pi-lock"></i>
+        </div>
+
+        <button [routerLink]="['/']"  pButton type="button" label="Sign In"></button>
+    </div>
+</div>

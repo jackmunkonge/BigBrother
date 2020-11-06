@@ -1,0 +1,42 @@
+<div class="layout-wrapper" (click)="onLayoutClick()"
+     [ngClass]="{'layout-static': isStatic(),
+                'layout-overlay': isOverlay(),
+                'layout-overlay-active': overlayMenuActive,
+                'layout-horizontal': isHorizontal(),
+                'layout-slim': isSlim(),
+                'layout-static-inactive': staticMenuDesktopInactive,
+                'layout-mobile-active': staticMenuMobileActive,
+                'layout-menu-dark':darkMenu,
+                'layout-menu-light':!darkMenu, 'p-input-filled': inputStyle === 'filled', 'p-ripple-disabled': !ripple}">
+
+    <app-topbar></app-topbar>
+
+    <div class="layout-menu-container" (click)="onMenuClick($event)">
+        <div class="layout-menu-logo">
+            <a href="#">
+                <img id="layout-menu-logo" src="assets/layout/images/logo-white.png" library="babylon-layout" />
+            </a>
+        </div>
+        <div class="layout-menu-wrapper">
+            <div class="menu-scroll-content">
+                <app-inline-profile *ngIf="profileMode=='inline'&&!isHorizontal()"></app-inline-profile>
+                <app-menu></app-menu>
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-main">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="layout-content">
+            <router-outlet></router-outlet>
+        </div>
+
+        <app-footer></app-footer>
+    </div>
+
+    <app-config></app-config>
+
+    <div class="layout-mask"></div>
+
+</div>

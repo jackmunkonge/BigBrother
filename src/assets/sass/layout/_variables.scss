@@ -1,0 +1,49 @@
+$fontFamily:'cabin',sans-serif;
+$fontSize:14px;
+$textColor:#212121;
+$textSecondaryColor:#727272;
+$borderRadius:3px;
+$transitionDuration:.3s;
+
+//main
+$bodyBgColor:#f2f2f2;
+$dividerColor:#E0E0E0;
+
+$footerBgColor:#ffffff;
+$footerBorderColor:#e8e8e8;
+
+//breadcrumb
+$breadcrumbBgColor:#ffffff;
+$breadcrumbBorder: 1px solid #e8e8e8;
+
+//light menu
+$menuBgColor:#ffffff;
+$menuBorder: 1px solid #E0E0E0;
+$menuSeparator:1px solid $dividerColor;
+$rootMenuitemTextColor:$textSecondaryColor;
+$menuitemTextColor:$textSecondaryColor;
+$menuitemIconColor:$textSecondaryColor;
+$menuitemHoverBgColor:#e0e0e0;
+
+//dark menu
+$darkMenuBgColor:#212121;
+$darkMenuBorder: 1px solid #212121;
+$darkMenuSeparator:1px solid #373737;
+$darkMenuRootMenuitemTextColor:#757575;
+$darkMenuitemTextColor:#BDBDBD;
+$darkMenuitemIconColor:#BDBDBD;
+$darkMenuitemHoverBgColor:#373737;
+
+//topbar
+$topbarMenuBgColor:#ffffff;
+$topbarMenuBorderColor:#e0e0e0;
+$topbarBadgeBgColor:#e0284f;
+$topbarBadgeTextColor:#ffffff;
+
+//card
+$cardBgColor:#ffffff;
+$cardBorder:1px solid #EEEEEE;
+
+//tooltip
+$tooltipBgColor:#212121;
+$tooltipTextColor:#ffffff;

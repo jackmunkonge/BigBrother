@@ -1,0 +1,39 @@
+/* cabin-300 - latin-ext_latin */
+@font-face {
+    font-family: 'cabin';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/cabin-v12-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local('cabin Light'), local('cabin-Light'),
+         url("../fonts/cabin-v12-latin-regular.eot#iefix") format('embedded-opentype'), /* IE6-IE8 */
+         url("../fonts/cabin-v12-latin-regular.woff2") format('woff2'), /* Super Modern Browsers */
+         url("../fonts/cabin-v12-latin-regular.woff") format('woff'), /* Modern Browsers */
+         url("../fonts/cabin-v12-latin-regular.ttf") format('truetype'), /* Safari, Android, iOS */
+         url("../fonts/cabin-v12-latin-regular.svg#cabin") format('svg'); /* Legacy iOS */
+  }
+  /* cabin-regular - latin-ext_latin */
+  @font-face {
+    font-family: 'cabin';
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/cabin-v12-latin-500.eot"); /* IE9 Compat Modes */
+    src: local('cabin Regular'), local('cabin-Regular'),
+         url("../fonts/cabin-v12-latin-500.eot#iefix") format('embedded-opentype'), /* IE6-IE8 */
+         url("../fonts/cabin-v12-latin-500.woff2") format('woff2'), /* Super Modern Browsers */
+         url("../fonts/cabin-v12-latin-500.woff") format('woff'), /* Modern Browsers */
+         url("../fonts/cabin-v12-latin-500.ttf") format('truetype'), /* Safari, Android, iOS */
+         url("../fonts/cabin-v12-latin-500.svg#cabin") format('svg'); /* Legacy iOS */
+  }
+  /* cabin-700 - latin-ext_latin */
+  @font-face {
+    font-family: 'cabin';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../fonts/cabin-v12-latin-700.eot"); /* IE9 Compat Modes */
+    src: local('cabin Bold'), local('cabin-Bold'),
+         url("../fonts/cabin-v12-latin-700.eot#iefix") format('embedded-opentype'), /* IE6-IE8 */
+         url("../fonts/cabin-v12-latin-700.woff2") format('woff2'), /* Super Modern Browsers */
+         url("../fonts/cabin-v12-latin-700.woff") format('woff'), /* Modern Browsers */
+         url("../fonts/cabin-v12-latin-700.ttf") format('truetype'), /* Safari, Android, iOS */
+         url("../fonts/cabin-v12-latin-700.svg#cabin") format('svg'); /* Legacy iOS */
+  }

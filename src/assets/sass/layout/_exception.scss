@@ -1,0 +1,79 @@
+.exception-body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+
+    .exception-panel {
+        display: none;
+    }
+
+    .exception-content {
+        position: fixed;
+        padding: 80px 0;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+
+        img {
+            display: inline-block;
+            margin-bottom: 160px;
+            width: 200px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 14px 0;
+            color: $textColor;
+
+            .exception-name {
+                color: $textSecondaryColor;
+            }
+        }
+
+        p {
+            font-size: 17px;
+            color: $textSecondaryColor;
+            margin: 0 0 32px 0;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .exception-body {
+        .exception-panel {
+            display: block;
+            position: fixed;
+            background-color: #ffffff;
+            height: 200%;
+            width: 100%;
+            left: -50%;
+            top: -50%;
+            @include opacity(0.95);
+            @include border-radius(50%);
+        }
+
+        .exception-content {
+            text-align: left;
+            position: fixed;
+            padding: 80px 0 0 80px;
+        }
+
+        &.error {
+            background: url("../../layout/images/pages/bg-error.jpg");
+            background-size: cover;
+        }
+
+        &.notfound {
+            background: url("../../layout/images/pages/bg-notfound.jpg");
+            background-size: cover;
+        }
+
+        &.access-denied {
+            background: url("../../layout/images/pages/bg-access.jpg");
+            background-size: cover;
+        }
+    }
+}

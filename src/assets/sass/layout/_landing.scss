@@ -1,0 +1,434 @@
+.landing-body {
+    background-color: #ffffff;
+
+    .layout-mask {
+        display: block;
+    }
+
+    .landing-wrapper {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+
+        #landing-menu {
+            list-style-type: none;
+            float: right;
+            padding: 0;
+            margin: 14px 0 0 0;
+
+            li {
+                display: inline-block;
+                margin-left: 14px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                a {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #525257;
+                    padding: 4px 8px;
+                    @include border-radius($borderRadius);
+                    @include transition(background-color $transitionDuration);
+
+                    &:hover {
+                        background-color: #252529;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+
+        #header {
+            border-bottom: 1px solid #d8d8dc;
+
+            .header-top {
+                padding: 20px 140px 0 140px;
+                @include clearfix();
+
+                .logo {
+                    height: 40px;
+                }
+
+                #landing-menu-button {
+                    display: none;
+                    color: #000000;
+                    float: right;
+                    margin-top: 8px;
+                    text-align: center;
+
+                    img {
+                        width: 6px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .header-content {
+                padding: 120px 0 120px 140px;
+
+                h1 {
+                    font-size: 42px;
+                    font-weight: 700;
+                    color: #252529;
+                    margin-top: 48px;
+                    margin-bottom: 24px;
+                    max-width: 400px;
+                }
+
+                p {
+                    font-size: 17px;
+                    margin-bottom: 24px;
+                    color: #8b8b90;
+                }
+            }
+        }
+
+        #features {
+            padding: 42px 140px;
+            background-color: #ffffff;
+            text-align: center;
+
+            h1 {
+                font-size: 28px;
+                color: #252529;
+                margin: 0 0 6px 0;
+            }
+
+            p {
+                font-size: 21px;
+                color: #8b8b90;
+                margin: 0;
+            }
+
+            .p-grid {
+                margin-top: 42px;
+
+                .p-col-12 {
+                    padding: 1em;
+                }
+
+                .feature-box {
+                    padding: 24px;
+                    @include shadow(0 3px 6px 0 rgba(0, 0, 0, 0.08));
+
+                    h3 {
+                        font-size: 21px;
+                        font-weight: 700;
+                        color: #252529;
+                        margin: 8px 0;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-size: 15px;
+                        color: #8b8b90;
+                    }
+                }
+            }
+        }
+
+        #promo {
+            padding: 42px 140px;
+            border-top: 5px solid $topbarBgColor;
+            background-color: #f2f2f2;
+            position: relative;
+
+            h1 {
+                font-size: 28px;
+                color: #252529;
+                margin: 0 0 16px 0;
+            }
+
+            p {
+                font-size: 17px;
+                color: #525257;
+                margin: 0 0 16px 0;
+            }
+
+            img {
+                position: absolute;
+                right: 140px;
+                top: 50%;
+                height: 100px;
+                margin-top: -50px;
+            }
+        }
+
+        #pricing {
+            padding: 42px 140px;
+            background-color: #ffffff;
+            text-align: center;
+
+            > h1 {
+                font-size: 28px;
+                color: #252529;
+                margin: 0 0 6px 0;
+            }
+
+            > p {
+                font-size: 21px;
+                color: #8b8b90;
+                margin: 0;
+            }
+
+            .p-grid {
+                margin-top: 42px;
+
+                .p-col-12 {
+                    padding: 28px;
+                }
+            }
+
+            .pricing-box {
+                min-height: 450px;
+                padding: 16px 48px;
+                background-color: #f2f2f2;
+                color: #525257;
+                border: 2px solid transparent;
+                @include transition(border-color $transitionDuration);
+                @include shadow(0 3px 6px 0 rgba(0, 0, 0, 0.08));
+
+                h3 {
+                    margin: 0 0 42px 0;
+                }
+
+                .pricing-intro {
+                    color: #8b8b90;
+                }
+
+                p {
+                    font-size: 14px;
+                    margin: 14px 0;
+                }
+
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        padding: 12px;
+
+                        i {
+                            color: #1fc4ac;
+                        }
+                    }
+                }
+
+                &:hover {
+                    border-color: $topbarBgColor;
+                }
+            }
+
+        }
+
+        #multimedia {
+            padding: 42px 140px;
+            text-align: center;
+            background-color: #f2f2f2;
+
+            > h1 {
+                font-size: 28px;
+                color: #252529;
+                margin: 0 0 6px 0;
+            }
+
+            > p {
+                font-size: 21px;
+                color: #8b8b90;
+                margin: 0;
+            }
+
+            .video-container {
+                margin-top: 42px;
+
+                iframe {
+                    width: 560px;
+                    height: 315px;
+                }
+            }
+        }
+
+        #footer {
+            background-color: #252529;
+            padding: 42px 140px;
+            text-align: left;
+
+            .footer-logo {
+                height: 32px;
+            }
+
+            .footer-menu {
+                span {
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-align: left;
+                    color: #8b8b90;
+                    display: block;
+                }
+
+                a {
+                    margin: 8px 0;
+                    display: block;
+                    color: #f4f4f9;
+                    @include transition(color $transitionDuration);
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+                }
+
+                .icon-link {
+                    display: inline-block;
+                    margin-top: 30px;
+
+                    .icon {
+                        color: #ffffff;
+                        font-size: 22px;
+                        margin-right: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .landing-body {
+        .landing-wrapper {
+            #header {
+                .header-content {
+                    background: url("../images/landing/asset-mackup-big.png") no-repeat;
+                    background-position: right 50%;
+                    background-size: 35%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .landing-body {
+        &.landing-menu-active {
+            .landing-wrapper {
+                #landing-menu {
+                    right: 0;
+                }
+            }
+        }
+
+        .landing-wrapper {
+            #landing-menu {
+                width: 250px;
+                height: 100%;
+                right: -250px;
+                background-color: #252529;
+                position: fixed;
+                top: 0;
+                margin: 0;
+                z-index: 999;
+                @include transition(right $transitionDuration);
+
+                > li {
+                    display: block;
+                    margin: 0;
+
+                    a {
+                        font-size: 18px;
+                        display: block;
+                        color: #8b8b90;
+                        padding: 12px 24px;
+                    }
+                }
+            }
+
+            #header {
+                .header-top {
+                    padding-left: 20px;
+                    padding-right: 20px;
+
+                    #landing-menu-button {
+                        display: inline-block;
+                    }
+                }
+
+                .header-content {
+                    padding-left: 20px;
+                    background: url("../images/landing/asset-mackup.png") no-repeat;
+                    background-position: right 50%;
+                }
+            }
+
+
+            #features {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            #promo {
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+
+                img {
+                    position: static;
+                    margin: 16px auto 0 auto;
+                    display: block;
+                }
+            }
+
+            #pricing {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            #multimedia {
+                padding-left: 20px;
+                padding-right: 20px;
+
+                .video-container {
+                    iframe {
+                        width: auto;
+                        height: auto;
+                    }
+                }
+            }
+
+            #footer {
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+
+                .footer-menu {
+                    span {
+                        text-align: center;
+                    }
+
+
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .landing-body {
+        .landing-wrapper {
+            #header {
+                .header-content {
+                    h1 {
+                        font-size: 18px;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        max-width: 250px;
+                    }
+                }
+            }
+        }
+    }
+}
