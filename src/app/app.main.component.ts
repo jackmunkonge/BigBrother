@@ -12,7 +12,7 @@ export class AppMainComponent implements OnInit {
 
     darkMenu = true;
 
-    profileMode = 'popup';
+    profileMode = 'inline';
 
     rotateMenuButton: boolean;
 
@@ -42,7 +42,7 @@ export class AppMainComponent implements OnInit {
 
     inlineMenuClick: boolean;
 
-    inputStyle = 'outlined';
+    inputStyle = 'filled';
 
     ripple: boolean;
 

@@ -84,7 +84,7 @@ export class AppConfigComponent implements OnInit {
 
     componentThemes: any;
 
-    themeColor = 'blue';
+    themeColor = 'indigo';
 
     constructor(public app: AppMainComponent) {}
 
