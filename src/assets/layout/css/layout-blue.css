@@ -528,7 +528,7 @@ a {
 }
 .layout-wrapper .layout-menu-container .layout-menu-logo a {
   display: block;
-  text-align: left;
+  text-align: center;
   height: 60px;
   padding-left: 12px;
 }
