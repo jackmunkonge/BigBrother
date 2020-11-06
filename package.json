@@ -95,5 +95,11 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "dependencies": {
+    "@angular/animations": "10.2.2",
+    "primeflex": "2.0.0",
+    "primeicons": "4.0.0",
+    "primeng": "10.0.3"
   }
 }
