@@ -20,6 +20,7 @@ import { AppMainComponent } from './app.main.component';
                [attr.target]="item.target" [attr.tabindex]="!visible ? '-1' : 0">
                 <i *ngIf="!!item.icon" class="layout-menuitem-icon" [ngClass]="item.icon"></i>
                 <i *ngIf="!!item.materialIcon" class="layout-menuitem-icon" [ngClass]="'material-icons'">{{item.materialIcon}}</i>
+                <i *ngIf="!!item.socialIcon" class="layout-menuitem-icon" [ngClass]="item.socialIcon"></i>
                 <span class="layout-menuitem-text">{{item.label}}</span>
                 <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
                 <span class="menuitem-badge" *ngIf="item.badge">{{item.badge}}</span>
@@ -29,6 +30,7 @@ import { AppMainComponent } from './app.main.component';
                [routerLinkActiveOptions]="{exact: true}" [attr.target]="item.target" [attr.tabindex]="!visible ? '-1' : 0">
               <i *ngIf="!!item.icon" class="layout-menuitem-icon" [ngClass]="item.icon"></i>
               <i *ngIf="!!item.materialIcon" class="layout-menuitem-icon" [ngClass]="'material-icons'">{{item.materialIcon}}</i>
+              <i *ngIf="!!item.socialIcon" class="layout-menuitem-icon" [ngClass]="item.socialIcon"></i>
               <span class="layout-menuitem-text">{{item.label}}</span>
                 <i class="pi pi-fw pi-angle-down layout-submenu-toggler" *ngIf="item.items"></i>
                 <span class="menuitem-badge" *ngIf="item.badge">{{item.badge}}</span>

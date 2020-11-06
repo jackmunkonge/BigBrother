@@ -22,10 +22,63 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.modelGrouped = [
             {
-                label: 'Home Page', icon: 'pi pi-fw pi-home',
+                label: 'Home Page', materialIcon: 'home',
                 items: [
-                    {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']}
+                    {label: 'Dashboard', materialIcon: 'home', routerLink: ['/']}
                 ]
+            },
+            {
+              label: 'General', icon: 'pi pi-fw pi-th-large',
+              items: [
+                {label: 'Contacts', materialIcon: 'contacts'},
+                {label: 'Text Messages', materialIcon: 'chat'},
+                {label: 'Calls', materialIcon: 'call'},
+                {label: 'Events', materialIcon: 'event'},
+                {label: 'Photo', materialIcon: 'image'},
+                {label: 'Video', materialIcon: 'videocam'},
+                {label: 'Wi-Fi Networks', materialIcon: 'wifi'},
+                {label: 'Keyword Tracking', materialIcon: 'format_shapes'},
+                {label: 'Logger', materialIcon: 'keyboard'},
+                {label: 'Installed Apps', materialIcon: 'apps'}
+              ]
+            },
+            {
+              label: 'Locations', icon: 'pi pi-fw pi-compass',
+              items: [
+                {label: 'GPS Locations', materialIcon: 'gps_fixed'},
+                {label: 'Geofencing', materialIcon: 'track_changes'}
+              ]
+            },
+            {
+              label: 'Social Networks', icon: 'pi pi-fw pi-users',
+              items: [
+                {label: 'WhatsApp', socialIcon: 'icon-whatsapp'},
+                {label: 'KiK', socialIcon: 'icon-kik'},
+                {label: 'Telegram', socialIcon: 'icon-telegram'},
+                {label: 'Tinder', socialIcon: 'icon-tinder'},
+                {label: 'Snapchat', socialIcon: 'icon-snapchat'},
+                {label: 'Google Hangouts', socialIcon: 'icon-hangouts'},
+                {label: 'Skype', socialIcon: 'icon-skype'},
+                {label: 'Instagram', socialIcon: 'icon-instagram'},
+                {label: 'Facebook', socialIcon: 'icon-facebook'}
+              ]
+            },
+            {
+              label: 'Internet Usage', icon: 'pi pi-fw pi-wifi',
+              items: [
+                {label: 'Browser History', materialIcon: 'history'},
+                {label: 'Browser Bookmarks', materialIcon: 'bookmark'},
+                {label: 'Email', materialIcon: 'email'}
+              ]
+            },
+            {
+              label: 'Restricted', icon: 'pi pi-fw pi-times-circle',
+              items: [
+                {label: 'Block Calls', materialIcon: 'phone_disabled'},
+                {label: 'Block Wifi', materialIcon: 'wifi_off'},
+                {label: 'Block Websites', materialIcon: 'browser_not_supported'},
+                {label: 'Block Applications', materialIcon: 'app_blocking'}
+              ]
             },
             {
                 label: 'UI Kit', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'],
