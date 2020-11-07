@@ -1,0 +1,25 @@
+<p-treeTable [value]="files">
+  <ng-template pTemplate="caption">
+    Responsive
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th class="priority-2">Size</th>
+      <th class="priority-3">Type</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+    <tr>
+      <td>
+        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+        {{rowData.name}}
+        <span class="visibility-sm">
+                    / {{rowData.size}} - {{rowData.type}}
+                </span>
+      </td>
+      <td class="priority-2">{{rowData.size}}</td>
+      <td class="priority-3">{{rowData.type}}</td>
+    </tr>
+  </ng-template>
+</p-treeTable>
