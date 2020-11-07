@@ -119,11 +119,11 @@ export class AppConfigComponent implements OnInit {
         const menuLogo: HTMLImageElement = document.getElementById('layout-menu-logo') as HTMLImageElement;
 
         if (theme === 'yellow' || theme === 'lime') {
-            topbarLogo.src = 'assets/layout/images/logo-black.png';
-            menuLogo.src = 'assets/layout/images/logo-black.png';
+            topbarLogo.src = 'assets/layout/images/banner-black.png';
+            menuLogo.src = 'assets/layout/images/banner-black.png';
         } else {
-            topbarLogo.src = 'assets/layout/images/logo-white.png';
-            menuLogo.src = 'assets/layout/images/logo-white.png';
+            topbarLogo.src = 'assets/layout/images/banner-white.png';
+            menuLogo.src = 'assets/layout/images/banner-white.png';
         }
     }
 
