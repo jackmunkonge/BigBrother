@@ -4,10 +4,10 @@ import { ContactsService } from '../../services/contacts.service';
 import { Contact } from '../../models/contact';
 
 @Component({
-  templateUrl: './app.contacts.component.html',
-  styleUrls: ['./app.contacts.component.scss']
+  templateUrl: './contacts.component.html',
+  styleUrls: ['./contacts.component.scss']
 })
-export class AppContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit {
 
   contacts: Contact[];
 
