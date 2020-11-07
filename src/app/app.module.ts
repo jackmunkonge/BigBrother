@@ -137,6 +137,7 @@ import {ProductService} from './demo/service/productservice';
 // Application services
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
+import { ContactsService } from './services/contacts.service';
 
 @NgModule({
   imports: [
@@ -265,7 +266,7 @@ import {MenuService} from './app.menu.service';
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
-    PhotoService, ProductService, MenuService, BreadcrumbService
+    PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService
   ],
   bootstrap: [AppComponent]
 })

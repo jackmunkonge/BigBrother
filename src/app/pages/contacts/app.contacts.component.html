@@ -1,25 +1,17 @@
-<p-treeTable [value]="files">
-  <ng-template pTemplate="caption">
-    Responsive
-  </ng-template>
-  <ng-template pTemplate="header">
+<p-table [columns]="cols" [value]="contacts" styleClass="p-datatable-responsive-demo">
+  <ng-template pTemplate="header" let-columns>
     <tr>
-      <th>Name</th>
-      <th class="priority-2">Size</th>
-      <th class="priority-3">Type</th>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td>
-        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-        {{rowData.name}}
-        <span class="visibility-sm">
-                    / {{rowData.size}} - {{rowData.type}}
-                </span>
+      <td *ngFor="let col of columns">
+        <span class="p-column-title">{{col.header}}</span>
+        {{rowData[col.field]}}
       </td>
-      <td class="priority-2">{{rowData.size}}</td>
-      <td class="priority-3">{{rowData.type}}</td>
     </tr>
   </ng-template>
-</p-treeTable>
+</p-table>
