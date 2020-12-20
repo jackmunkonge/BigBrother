@@ -31,7 +31,7 @@ export class AppMenuComponent implements OnInit {
               label: 'General', icon: 'pi pi-fw pi-th-large',
               items: [
                 {label: 'Contacts', materialIcon: 'contacts', routerLink: ['/general/contacts']},
-                {label: 'Text Messages', materialIcon: 'chat'},
+                {label: 'Text Messages', materialIcon: 'chat', routerLink: ['/general/text-messages']},
                 {label: 'Calls', materialIcon: 'call'},
                 {label: 'Events', materialIcon: 'event'},
                 {label: 'Photo', materialIcon: 'image'},

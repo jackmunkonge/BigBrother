@@ -36,7 +36,8 @@ import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
 import {AppWizardComponent} from './pages/app.wizard.component';
-import { AppContactsComponent } from './pages/contacts/app.contacts.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
+import { TextMessagesComponent } from './pages/text-messages/text-messages.component';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { AppContactsComponent } from './pages/contacts/app.contacts.component';
                 path: '', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardDemoComponent},
-                    {path: 'general/contacts', component: AppContactsComponent},
+                    {path: 'general/contacts', component: ContactsComponent},
+                    {path: 'general/text-messages', component: TextMessagesComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},

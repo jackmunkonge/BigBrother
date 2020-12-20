@@ -79,7 +79,7 @@ import {VirtualScrollerModule} from 'primeng/virtualscroller';
 import {AppComponent} from './app.component';
 import {AppMainComponent} from './app.main.component';
 import {AppMenuComponent} from './app.menu.component';
-import {AppContactsComponent} from './pages/contacts/app.contacts.component';
+import {ContactsComponent} from './pages/contacts/contacts.component';
 import {AppMenuitemComponent} from './app.menuitem.component';
 import {AppProfileComponent} from './app.profile.component';
 import {AppBreadcrumbComponent} from './app.breadcrumb.component';
@@ -138,6 +138,10 @@ import {ProductService} from './demo/service/productservice';
 import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { ContactsService } from './services/contacts.service';
+import { TextMessagesComponent } from './pages/text-messages/text-messages.component';
+import { TextMessagesService } from './services/text-messages.service';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { MessageListComponent } from './shared/message-list/message-list.component';
 
 @NgModule({
   imports: [
@@ -217,7 +221,7 @@ import { ContactsService } from './services/contacts.service';
   ],
   declarations: [
     AppComponent,
-    AppContactsComponent,
+    ContactsComponent,
     AppMainComponent,
     AppMenuComponent,
     AppMenuitemComponent,
@@ -261,12 +265,16 @@ import { ContactsService } from './services/contacts.service';
     AppNotfoundComponent,
     AppErrorComponent,
     AppAccessdeniedComponent,
-    AppWizardComponent
+    AppWizardComponent,
+    TextMessagesComponent,
+    EllipsisPipe,
+    MessageListComponent
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
-    PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService
+    PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
+    TextMessagesService
   ],
   bootstrap: [AppComponent]
 })
