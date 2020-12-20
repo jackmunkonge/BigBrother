@@ -1,4 +1,4 @@
-<p-table [columns]="cols" [value]="contacts" styleClass="p-datatable-responsive-demo">
+<p-table *ngIf="!loading" [columns]="cols" [value]="contacts" styleClass="p-datatable-responsive-demo" sortField="id">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">

@@ -139,6 +139,9 @@ import {BreadcrumbService} from './app.breadcrumb.service';
 import {MenuService} from './app.menu.service';
 import { ContactsService } from './services/contacts.service';
 import { TextMessagesComponent } from './pages/text-messages/text-messages.component';
+import { TextMessagesService } from './services/text-messages.service';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { MessageListComponent } from './shared/message-list/message-list.component';
 
 @NgModule({
   imports: [
@@ -263,12 +266,15 @@ import { TextMessagesComponent } from './pages/text-messages/text-messages.compo
     AppErrorComponent,
     AppAccessdeniedComponent,
     AppWizardComponent,
-    TextMessagesComponent
+    TextMessagesComponent,
+    EllipsisPipe,
+    MessageListComponent
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
-    PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService
+    PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
+    TextMessagesService
   ],
   bootstrap: [AppComponent]
 })

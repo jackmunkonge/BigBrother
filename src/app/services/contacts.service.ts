@@ -7,7 +7,7 @@ export class ContactsService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts() {
+  public getContacts() {
     return this.http.get<any>('assets/data/contacts.json')
       .toPromise()
       .then(res => res.data as Contact[])
