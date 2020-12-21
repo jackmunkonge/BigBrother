@@ -10,7 +10,7 @@ export class ChatService {
   getChat() {
     return this.http.get<any>('assets/data/chat.json')
       .toPromise()
-      .then(res => res.data as Chat)
+      .then(res => res.data as Chat[])
       .then(data => data);
   }
 }

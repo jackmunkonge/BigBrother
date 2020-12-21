@@ -1,6 +1,8 @@
 {
-  "data": {
-    "messages": [
+  "data": [
+    {
+      "id": "1",
+      "messages": [
         {
           "id": "1",
           "incoming": true,
@@ -50,5 +52,52 @@
           "date": "23rd March 2020"
         }
       ]
-  }
+    },
+    {
+      "id": "2",
+      "messages": [
+        {
+          "id": "1",
+          "incoming": false,
+          "body": "Aaaaaaaa",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "2",
+          "incoming": false,
+          "body": "Bbbbbbbbb",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "3",
+          "incoming": false,
+          "body": "Ccccccccc",
+          "date": "23rd March 2020"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "messages": [
+        {
+          "id": "1",
+          "incoming": true,
+          "body": "Zzzzzz",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "2",
+          "incoming": true,
+          "body": "Xxxxxxxx",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "3",
+          "incoming": true,
+          "body": "Yyyyyyyyy",
+          "date": "23rd March 2020"
+        }
+      ]
+    }
+  ]
 }

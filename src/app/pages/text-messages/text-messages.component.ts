@@ -15,7 +15,8 @@ export class TextMessagesComponent implements OnInit {
 
   items: SelectItem<TextMessage>[];
   textMessages: TextMessage[];
-  selection: TextMessage;
+  initialSelection: TextMessage;
+  selected: TextMessage;
 
   constructor(private textMessagesService: TextMessagesService, private breadcrumbService: BreadcrumbService) {
     this.breadcrumbService.setItems([
@@ -29,7 +30,7 @@ export class TextMessagesComponent implements OnInit {
       .then(data => this.items = this.getTextSelectItems(data))
       .then(() => {
         this.loading = false;
-        this.selection = this.items[0].value;
+        this.initialSelection = this.items[0].value;
       });
   }
 
@@ -42,7 +43,7 @@ export class TextMessagesComponent implements OnInit {
     });
   }
 
-  onChange(chat: SelectItem<TextMessage>) {
-    console.log(chat);
+  onChange(chat: TextMessage) {
+    this.selected = chat;
   }
 }

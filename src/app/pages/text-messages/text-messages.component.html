@@ -1,11 +1,11 @@
 <div class="p-grid" *ngIf="!loading">
 
   <div class="p-col-3">
-    <message-list [items]="items" [selection]="selection" (change)="onChange($event)"></message-list>
+    <message-list [items]="items" [selection]="initialSelection" (change)="onChange($event)"></message-list>
   </div>
 
   <div class="p-col-9">
-    <chat></chat>
+    <chat [chatId]="!!selected ?  selected.id : initialSelection.id"></chat>
   </div>
 
 </div>
