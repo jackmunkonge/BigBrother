@@ -1,0 +1,35 @@
+<div *ngIf="!loading" class="card chat">
+    <ul>
+        <li *ngFor="let message of chat.messages">
+            <div *ngIf="message.incoming === true" class="p-grid sender">
+                <div class="p-col-fixed">
+                    <img src="assets/layout/images/avatar-john.png" alt="babylon-layout" />
+                </div>
+                <div class="p-col">
+                    <div class="chat-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nam ac euismod justo, eget blandit purus.</div>
+                </div>
+            </div>
+            <div *ngIf="message.incoming === false" class="p-grid recipient">
+                <div class="p-col">
+                    <div class="chat-message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nam ac euismod justo, eget blandit purus.</div>
+                </div>
+                <div class="p-col-fixed">
+                    <img src="assets/layout/images/avatar-john.png" alt="babylon-layout" />
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="new-message">
+        <div class="p-grid p-nogutter">
+            <div class="p-col">
+                <input type="text" placeholder="Write a message.." />
+            </div>
+            <div class="p-col-fixed">
+                <p-button type="button" label="Send"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

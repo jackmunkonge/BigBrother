@@ -1,0 +1,54 @@
+{
+  "data": {
+    "messages": [
+        {
+          "id": "1",
+          "incoming": true,
+          "body": "Hfyuhi uiwbnofuewbi weihfiwebfehbiw",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "2",
+          "incoming": true,
+          "body": "Hdfd ewef werweferf wfrwe",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "3",
+          "incoming": false,
+          "body": "Hfee efefeefe efrefrdefr",
+          "date": "23rd March 2020"
+        },
+        {
+          "id": "4",
+          "incoming": true,
+          "body": "Okerfne wefinewfewfiwnfienw",
+          "date": "23rd March 2020"
+        },
+        {
+          "incoming": false,
+          "id": "5",
+          "body": ":)",
+          "date": "23rd March 2020"
+        },
+        {
+          "incoming": true,
+          "id": "6",
+          "body": "fnef!",
+          "date": "23rd March 2020"
+        },
+        {
+          "incoming": false,
+          "id": "7",
+          "body": "aaaaaaaaa",
+          "date": "23rd March 2020"
+        },
+        {
+          "incoming": false,
+          "id": "8",
+          "body": "bbbbbbbbbbbbb!",
+          "date": "23rd March 2020"
+        }
+      ]
+  }
+}
