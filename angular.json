@@ -21,7 +21,7 @@
               "src/upload.php"
             ],
             "styles": [
-              "src/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",

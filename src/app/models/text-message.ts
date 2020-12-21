@@ -3,8 +3,4 @@ export interface TextMessage {
   name: string;
   body: string;
   date: string;
-  media?: {
-    photo?: string;
-    video?: string;
-  }
 }

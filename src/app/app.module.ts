@@ -142,6 +142,8 @@ import { TextMessagesComponent } from './pages/text-messages/text-messages.compo
 import { TextMessagesService } from './services/text-messages.service';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { MessageListComponent } from './shared/message-list/message-list.component';
+import { ChatService } from './services/chat.service';
+import { ChatComponent } from './shared/chat/chat.component';
 
 @NgModule({
   imports: [
@@ -268,13 +270,14 @@ import { MessageListComponent } from './shared/message-list/message-list.compone
     AppWizardComponent,
     TextMessagesComponent,
     EllipsisPipe,
-    MessageListComponent
+    MessageListComponent,
+    ChatComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
-    TextMessagesService
+    TextMessagesService, ChatService,
   ],
   bootstrap: [AppComponent]
 })
