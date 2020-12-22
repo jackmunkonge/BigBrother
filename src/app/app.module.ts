@@ -144,6 +144,8 @@ import { EllipsisPipe } from './pipes/ellipsis.pipe';
 import { MessageListComponent } from './shared/message-list/message-list.component';
 import { ChatService } from './services/chat.service';
 import { ChatComponent } from './shared/chat/chat.component';
+import { GalleryComponent } from './shared/gallery/gallery.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 
 @NgModule({
   imports: [
@@ -272,6 +274,8 @@ import { ChatComponent } from './shared/chat/chat.component';
     EllipsisPipe,
     MessageListComponent,
     ChatComponent,
+    GalleryComponent,
+    PhotosComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
