@@ -52,7 +52,7 @@ export class AppMenuComponent implements OnInit {
             {
               label: 'Social Networks', icon: 'pi pi-fw pi-users',
               items: [
-                {label: 'WhatsApp', socialIcon: 'icon-whatsapp'},
+                {label: 'WhatsApp', socialIcon: 'icon-whatsapp', routerLink: ['/socials/whatsapp']},
                 {label: 'KiK', socialIcon: 'icon-kik'},
                 {label: 'Telegram', socialIcon: 'icon-telegram'},
                 {label: 'Tinder', socialIcon: 'icon-tinder'},

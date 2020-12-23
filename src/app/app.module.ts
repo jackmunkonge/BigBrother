@@ -146,6 +146,7 @@ import { ChatService } from './services/chat.service';
 import { ChatComponent } from './shared/chat/chat.component';
 import { GalleryComponent } from './shared/gallery/gallery.component';
 import { PhotosComponent } from './pages/photos/photos.component';
+import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 
 @NgModule({
   imports: [
@@ -276,6 +277,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
     ChatComponent,
     GalleryComponent,
     PhotosComponent,
+    WhatsAppComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
