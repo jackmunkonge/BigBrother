@@ -13,21 +13,6 @@ export class GalleryComponent implements OnInit {
 
   responsiveOptions: any[] = [
     {
-      breakpoint: '1024px',
-      numVisible: 5
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1
-    }
-  ];
-
-  responsiveOptions2: any[] = [
-    {
       breakpoint: '1500px',
       numVisible: 5
     },
@@ -45,13 +30,8 @@ export class GalleryComponent implements OnInit {
     }
   ];
 
-  displayBasic: boolean;
-
-  displayBasic2: boolean;
-
-  displayCustom: boolean;
-
   activeIndex: number = 0;
+  display: boolean;
 
   constructor(private photoService: PhotoService) { }
 
@@ -63,6 +43,6 @@ export class GalleryComponent implements OnInit {
 
   imageClick(index: number) {
     this.activeIndex = index;
-    this.displayCustom = true;
+    this.display = true;
   }
 }
