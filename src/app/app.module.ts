@@ -148,6 +148,7 @@ import { GalleryComponent } from './shared/gallery/gallery.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
+import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 
 @NgModule({
   imports: [
@@ -280,6 +281,7 @@ import { EventsComponent } from './pages/events/events.component';
     PhotosComponent,
     WhatsAppComponent,
     EventsComponent,
+    BlockApplicationsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

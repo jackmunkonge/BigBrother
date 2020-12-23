@@ -77,7 +77,7 @@ export class AppMenuComponent implements OnInit {
                 {label: 'Block Calls', materialIcon: 'phone_disabled'},
                 {label: 'Block Wifi', materialIcon: 'wifi_off'},
                 {label: 'Block Websites', materialIcon: 'browser_not_supported'},
-                {label: 'Block Applications', materialIcon: 'app_blocking'}
+                {label: 'Block Applications', materialIcon: 'app_blocking', routerLink: ['/restricted/block-applications']}
               ]
             },
             {

@@ -41,6 +41,7 @@ import { TextMessagesComponent } from './pages/text-messages/text-messages.compo
 import { PhotosComponent } from './pages/photos/photos.component';
 import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
+import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 
 @NgModule({
     imports: [
@@ -54,6 +55,7 @@ import { EventsComponent } from './pages/events/events.component';
                     {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},
+                    {path: 'restricted/block-applications', component: BlockApplicationsComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},
