@@ -38,6 +38,7 @@ import {AppHelpComponent} from './pages/app.help.component';
 import {AppWizardComponent} from './pages/app.wizard.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { TextMessagesComponent } from './pages/text-messages/text-messages.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import { TextMessagesComponent } from './pages/text-messages/text-messages.compo
                     {path: '', component: DashboardDemoComponent},
                     {path: 'general/contacts', component: ContactsComponent},
                     {path: 'general/text-messages', component: TextMessagesComponent},
+                    {path: 'general/photos', component: PhotosComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},

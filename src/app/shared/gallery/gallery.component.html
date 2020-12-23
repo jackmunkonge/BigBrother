@@ -1,0 +1,27 @@
+<p-fieldset [toggleable]="true">
+    <p-header>January</p-header>
+    <div *ngIf="images" class="p-grid">
+        <div *ngFor="let image of images; let index = index;" class="p-col-2" key="index">
+            <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer" (click)="imageClick(index)"/>
+        </div>
+    </div>
+</p-fieldset>
+<p-galleria [value]="images" [(visible)]="display" [(activeIndex)]="activeIndex"
+            [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '850px'}" [numVisible]="7"
+            [circular]="false" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="true"
+            [baseZIndex]="100000">
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.previewImageSrc" style="width: 100%; display: block;"/>
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+            <img [src]="item.thumbnailImageSrc" style="display: block;"/>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="caption" let-item>
+        <div class="p-d-flex p-jc-between">
+            <h4>{{item.title}}</h4>
+            <h6>{{item.dateCreated}}</h6>
+        </div>
+    </ng-template>
+</p-galleria>
