@@ -82,13 +82,19 @@
         {
           "id": "1",
           "incoming": true,
-          "body": "Zzzzzz",
+          "media": {
+            "video": false,
+            "src": "assets/demo/images/galleria/galleria1s.jpg"
+          },
           "date": "23rd March 2020"
         },
         {
           "id": "2",
           "incoming": true,
-          "body": "Xxxxxxxx",
+          "media": {
+            "video": true,
+            "src": "assets/demo/images/galleria/galleria1s.jpg"
+          },
           "date": "23rd March 2020"
         },
         {

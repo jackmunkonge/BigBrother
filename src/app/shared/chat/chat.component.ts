@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chat } from '../../models/chat';
 import { ChatService } from '../../services/chat.service';
+import { PhotoService } from '../../demo/service/photoservice';
 
 @Component({
   selector: 'chat',
@@ -13,7 +14,7 @@ export class ChatComponent implements OnInit, OnChanges {
   chat: Chat;
   loading = false;
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, private photoService: PhotoService) { }
 
   ngOnInit(): void {
 
@@ -42,5 +43,4 @@ export class ChatComponent implements OnInit, OnChanges {
       })
       .then(() => this.loading = false);
   }
-
 }

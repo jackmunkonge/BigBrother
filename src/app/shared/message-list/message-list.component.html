@@ -3,7 +3,13 @@
     <ng-template let-text let-i="index" pTemplate="item">
       <div class="p-grid p-flex-column" style="width: 100%">
         <h4 class="p-col p-mb-2">{{text.title}}</h4>
-        <p class="p-col p-mb-2 p-text-normal">{{text.value.body | ellipsis: [40]}}</p>
+        <p *ngIf="!!text.value.body" class="p-col p-mb-2 p-text-normal">{{text.value.body | ellipsis: [40]}}</p>
+        <div *ngIf="!!text.value.media">
+            <p class="p-col p-mb-2 p-text-normal">
+                <i [class]="text.value.media.video ? 'pi pi-video' : 'pi pi-camera'"></i>
+                {{text.value.media.video ? ' Video' : ' Photo'}}
+            </p>
+        </div>
         <p class="p-col p-text-right p-text-light">{{text.value.date}}</p>
       </div>
     </ng-template>

@@ -3,8 +3,11 @@
     {
       "id": "1",
       "name": "John Phillips",
-      "body": "Hsgiuebfubwubfwo wefbewuob ugib",
-      "date": "10th August 2020, 10:00AM"
+      "date": "10th August 2020, 10:00AM",
+      "media": {
+        "src": "dfjwidncjifjdw",
+        "video": true
+      }
     },
     {
       "id": "2",
