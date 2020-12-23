@@ -1,4 +1,4 @@
-<p-table [value]="products">
+<p-table [value]="apps">
     <ng-template pTemplate="header">
         <tr>
             <th>App</th>
@@ -6,11 +6,11 @@
             <th>Blocked</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-app>
         <tr>
-            <td><img [src]="'assets/demo/images/product/' + product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td>
-            <td>{{product.price | currency:'USD'}}</td>
-            <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td>
+            <td><img [src]="app.imgUrl" [alt]="app.title" width="100" class="p-shadow-4" /></td>
+            <td>{{app.title}}</td>
+            <td><p-inputSwitch [(ngModel)]="app.blocked"></p-inputSwitch> <span><h5>{{app.blocked ? 'Blocked' : 'Not blocked'}}</h5></span></td>
         </tr>
     </ng-template>
 </p-table>

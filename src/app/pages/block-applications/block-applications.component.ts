@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../../app.breadcrumb.service';
-import { Product } from '../../demo/domain/product';
-import { ProductService } from '../../demo/service/productservice';
+import { AppService } from '../../services/app.service';
+import { App } from '../../models/app';
 
 @Component({
   templateUrl: './block-applications.component.html',
@@ -9,7 +9,7 @@ import { ProductService } from '../../demo/service/productservice';
 })
 export class BlockApplicationsComponent implements OnInit {
 
-  products: Product[];
+  apps: App[];
 
   constructor(private appService: AppService, private breadcrumbService: BreadcrumbService) {
     this.breadcrumbService.setItems([
@@ -18,6 +18,10 @@ export class BlockApplicationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getProductsSmall().then(data => this.products = data);
+    this.appService.getApps().then(data => this.apps = data);
+  }
+
+  toggleBlocked(id: string) {
+    this.apps.filter(app => app.id === id).map(app => app.blocked = !app.blocked);
   }
 }
