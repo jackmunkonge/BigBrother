@@ -33,7 +33,7 @@ export class AppMenuComponent implements OnInit {
                 {label: 'Contacts', materialIcon: 'contacts', routerLink: ['/general/contacts']},
                 {label: 'Text Messages', materialIcon: 'chat', routerLink: ['/general/text-messages']},
                 {label: 'Calls', materialIcon: 'call'},
-                {label: 'Events', materialIcon: 'event'},
+                {label: 'Events', materialIcon: 'event', routerLink: ['/general/events']},
                 {label: 'Photos', materialIcon: 'image', routerLink: ['/general/photos']},
                 {label: 'Videos', materialIcon: 'videocam'},
                 {label: 'Wi-Fi Networks', materialIcon: 'wifi'},

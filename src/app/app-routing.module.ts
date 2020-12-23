@@ -40,6 +40,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { TextMessagesComponent } from './pages/text-messages/text-messages.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
+import { EventsComponent } from './pages/events/events.component';
 
 @NgModule({
     imports: [
@@ -50,6 +51,7 @@ import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
                     {path: '', component: DashboardDemoComponent},
                     {path: 'general/contacts', component: ContactsComponent},
                     {path: 'general/text-messages', component: TextMessagesComponent},
+                    {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},

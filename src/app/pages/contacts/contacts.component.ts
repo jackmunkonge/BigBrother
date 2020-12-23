@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../../app.breadcrumb.service';
 import { ContactsService } from '../../services/contacts.service';
 import { Contact } from '../../models/contact';
-import { SelectItem } from 'primeng/api';
-import { TextMessage } from '../../models/text-message';
 
 @Component({
   templateUrl: './contacts.component.html',
