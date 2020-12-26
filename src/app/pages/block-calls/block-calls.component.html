@@ -1,0 +1,15 @@
+<p-table [value]="calls">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Restricted Phone Number</th>
+            <th>Blocked</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-call>
+        <tr>
+            <td>{{call.number}}</td>
+            <td><p-inputSwitch [(ngModel)]="call.blocked"></p-inputSwitch> <span><h5>{{call.blocked ? 'Blocked' : 'Not blocked'}}</h5></span></td>
+        </tr>
+    </ng-template>
+</p-table>
+

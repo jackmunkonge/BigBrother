@@ -42,6 +42,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
 import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
+import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 
 @NgModule({
     imports: [
@@ -56,6 +57,7 @@ import { BlockApplicationsComponent } from './pages/block-applications/block-app
                     {path: 'general/photos', component: PhotosComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},
                     {path: 'restricted/block-applications', component: BlockApplicationsComponent},
+                    {path: 'restricted/block-calls', component: BlockCallsComponent},
                     {path: 'uikit/formlayout', component: FormLayoutDemoComponent},
                     {path: 'uikit/input', component: InputDemoComponent},
                     {path: 'uikit/button', component: ButtonDemoComponent},
