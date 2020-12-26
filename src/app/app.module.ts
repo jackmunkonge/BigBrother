@@ -150,6 +150,8 @@ import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
 import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 import { AppService } from './services/app.service';
+import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
+import { CallService } from './services/call.service';
 
 @NgModule({
   imports: [
@@ -283,12 +285,13 @@ import { AppService } from './services/app.service';
     WhatsAppComponent,
     EventsComponent,
     BlockApplicationsComponent,
+    BlockCallsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
-    TextMessagesService, ChatService, AppService,
+    TextMessagesService, ChatService, AppService, CallService,
   ],
   bootstrap: [AppComponent]
 })
