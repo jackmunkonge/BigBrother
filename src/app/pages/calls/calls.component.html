@@ -1,0 +1,19 @@
+<p-table [value]="calls">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Date Called</th>
+            <th>Incoming</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-call>
+        <tr>
+            <td>{{call.name}}</td>
+            <td>{{call.number}}</td>
+            <td>{{call.date}}</td>
+            <td><h5>{{call.incoming ? 'Incoming' : 'Outgoing'}}</h5></td>
+        </tr>
+    </ng-template>
+</p-table>
+

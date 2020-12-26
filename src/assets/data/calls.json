@@ -2,16 +2,25 @@
   "data": [
     {
       "id": "1",
+      "name": "Jennifer Coleston",
+      "date": "10:15, 23rd December 2020",
+      "incoming": true,
       "number": "07880887417",
       "blocked": false
     },
     {
       "id": "2",
+      "name": "Adam Coleston",
+      "date": "13:01, 23rd December 2020",
+      "incoming": true,
       "number": "07880887417",
       "blocked": true
     },
     {
       "id": "3",
+      "name": "Demi Adegoke",
+      "date": "17:08, 23rd December 2020",
+      "incoming": false,
       "number": "07880887417",
       "blocked": false
     }
