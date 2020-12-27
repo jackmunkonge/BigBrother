@@ -43,6 +43,7 @@ import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
 import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
+import { CallsComponent } from './pages/calls/calls.component';
 
 @NgModule({
     imports: [
@@ -53,6 +54,7 @@ import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
                     {path: '', component: DashboardDemoComponent},
                     {path: 'general/contacts', component: ContactsComponent},
                     {path: 'general/text-messages', component: TextMessagesComponent},
+                    {path: 'general/calls', component: CallsComponent},
                     {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},

@@ -152,6 +152,8 @@ import { BlockApplicationsComponent } from './pages/block-applications/block-app
 import { AppService } from './services/app.service';
 import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallService } from './services/call.service';
+import { CallsComponent } from './pages/calls/calls.component';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({
   imports: [
@@ -227,7 +229,8 @@ import { CallService } from './services/call.service';
     TreeModule,
     TreeTableModule,
     VirtualScrollerModule,
-    AppCodeModule
+    AppCodeModule,
+    NgxAudioPlayerModule,
   ],
   declarations: [
     AppComponent,
@@ -286,6 +289,7 @@ import { CallService } from './services/call.service';
     EventsComponent,
     BlockApplicationsComponent,
     BlockCallsComponent,
+    CallsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
