@@ -153,6 +153,7 @@ import { AppService } from './services/app.service';
 import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallService } from './services/call.service';
 import { CallsComponent } from './pages/calls/calls.component';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({
   imports: [
@@ -228,7 +229,8 @@ import { CallsComponent } from './pages/calls/calls.component';
     TreeModule,
     TreeTableModule,
     VirtualScrollerModule,
-    AppCodeModule
+    AppCodeModule,
+    NgxAudioPlayerModule,
   ],
   declarations: [
     AppComponent,

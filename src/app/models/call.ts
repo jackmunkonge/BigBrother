@@ -1,3 +1,5 @@
+import { Track } from 'ngx-audio-player';
+
 export interface Call {
   id: string;
   number: string;
@@ -5,4 +7,5 @@ export interface Call {
   date: string;
   incoming: boolean;
   blocked: boolean;
+  audio?: Track[];
 }

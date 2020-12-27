@@ -1,10 +1,20 @@
-<p-table [value]="calls">
+<p-table [value]="calls" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="colgroup">
+        <colgroup>
+            <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:20%">
+            <col style="width:10%">
+            <col style="width:40%">
+        </colgroup>
+    </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>Name</th>
             <th>Phone Number</th>
             <th>Date Called</th>
-            <th>Incoming</th>
+            <th>Call Type</th>
+            <th>Call Record</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-call>
@@ -13,6 +23,11 @@
             <td>{{call.number}}</td>
             <td>{{call.date}}</td>
             <td><h5>{{call.incoming ? 'Incoming' : 'Outgoing'}}</h5></td>
+            <td>
+                <ngx-audio-player  *ngIf="!!call.audio" [playlist]="call.audio" [displayTitle]="false" [displayPlaylist]="false"
+                                  [displayVolumeControls]="false" [expanded]="false" [disablePositionSlider]="true">
+                </ngx-audio-player>
+            </td>
         </tr>
     </ng-template>
 </p-table>
