@@ -45,7 +45,7 @@ export class AppMenuComponent implements OnInit {
             {
               label: 'Locations', icon: 'pi pi-fw pi-compass',
               items: [
-                {label: 'GPS Locations', materialIcon: 'gps_fixed'},
+                {label: 'GPS Locations', materialIcon: 'gps_fixed', routerLink: ['/locations/gps']},
                 {label: 'Geofencing', materialIcon: 'track_changes'}
               ]
             },

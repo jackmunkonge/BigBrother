@@ -44,6 +44,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallsComponent } from './pages/calls/calls.component';
+import { GpsComponent } from './pages/gps/gps.component';
 
 @NgModule({
     imports: [
@@ -57,6 +58,7 @@ import { CallsComponent } from './pages/calls/calls.component';
                     {path: 'general/calls', component: CallsComponent},
                     {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
+                    {path: 'locations/gps', component: GpsComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},
                     {path: 'restricted/block-applications', component: BlockApplicationsComponent},
                     {path: 'restricted/block-calls', component: BlockCallsComponent},

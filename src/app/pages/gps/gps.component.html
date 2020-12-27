@@ -1,0 +1,14 @@
+<p-table [value]="gpsLocations">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Address</th>
+            <th>Location Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-location>
+        <tr>
+            <td>{{location.address}}</td>
+            <td>{{location.locationDate}}</td>
+        </tr>
+    </ng-template>
+</p-table>

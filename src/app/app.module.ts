@@ -154,6 +154,8 @@ import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallService } from './services/call.service';
 import { CallsComponent } from './pages/calls/calls.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { GpsComponent } from './pages/gps/gps.component';
+import { GpsService } from './services/gps.service';
 
 @NgModule({
   imports: [
@@ -290,12 +292,13 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
     BlockApplicationsComponent,
     BlockCallsComponent,
     CallsComponent,
+    GpsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
-    TextMessagesService, ChatService, AppService, CallService,
+    TextMessagesService, ChatService, AppService, CallService, GpsService,
   ],
   bootstrap: [AppComponent]
 })
