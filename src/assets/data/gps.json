@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "address": "85 Windsor Road, London, NW86 3WV",
+      "locationDate": "10:51, 23rd January 2020"
+    },
+    {
+      "id": "2",
+      "address": "85 New Street, London, EC94 1NY",
+      "locationDate": "13:13, 23rd January 2020"
+    },
+    {
+      "id": "3",
+      "address": "9419 South Street, London, EC56 9UY",
+      "locationDate": "18:44, 24th January 2020"
+    }
+  ]
+}

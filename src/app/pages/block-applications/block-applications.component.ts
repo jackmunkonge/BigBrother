@@ -20,8 +20,4 @@ export class BlockApplicationsComponent implements OnInit {
   ngOnInit() {
     this.appService.getApps().then(data => this.apps = data);
   }
-
-  toggleBlocked(id: string) {
-    this.apps.filter(app => app.id === id).map(app => app.blocked = !app.blocked);
-  }
 }
