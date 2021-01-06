@@ -115,7 +115,6 @@ import {WidgetsComponent} from './utilities/widgets.component';
 import {SpacingComponent} from './utilities/spacing.component';
 import {TypographyComponent} from './utilities/typography.component';
 import {TextComponent} from './utilities/text.component';
-import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
@@ -157,6 +156,7 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { GpsComponent } from './pages/gps/gps.component';
 import { GpsService } from './services/gps.service';
 import { HereMapComponent } from './shared/map/map.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   imports: [
@@ -273,7 +273,6 @@ import { HereMapComponent } from './shared/map/map.component';
     SpacingComponent,
     TypographyComponent,
     TextComponent,
-    AppCrudComponent,
     AppCalendarComponent,
     AppLoginComponent,
     AppInvoiceComponent,
@@ -295,6 +294,7 @@ import { HereMapComponent } from './shared/map/map.component';
     CallsComponent,
     GpsComponent,
     HereMapComponent,
+    SettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

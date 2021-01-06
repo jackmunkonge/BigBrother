@@ -31,7 +31,6 @@ import {WidgetsComponent} from './utilities/widgets.component';
 import {SpacingComponent} from './utilities/spacing.component';
 import {TypographyComponent} from './utilities/typography.component';
 import {TextComponent} from './utilities/text.component';
-import {AppCrudComponent} from './pages/app.crud.component';
 import {AppCalendarComponent} from './pages/app.calendar.component';
 import {AppInvoiceComponent} from './pages/app.invoice.component';
 import {AppHelpComponent} from './pages/app.help.component';
@@ -45,6 +44,7 @@ import { BlockApplicationsComponent } from './pages/block-applications/block-app
 import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallsComponent } from './pages/calls/calls.component';
 import { GpsComponent } from './pages/gps/gps.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
     imports: [
@@ -58,6 +58,7 @@ import { GpsComponent } from './pages/gps/gps.component';
                     {path: 'general/calls', component: CallsComponent},
                     {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
+                    {path: 'general/settings', component: SettingsComponent},
                     {path: 'locations/gps', component: GpsComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},
                     {path: 'restricted/block-applications', component: BlockApplicationsComponent},
@@ -85,7 +86,6 @@ import { GpsComponent } from './pages/gps/gps.component';
                     {path: 'utilities/spacing', component: SpacingComponent},
                     {path: 'utilities/typography', component: TypographyComponent},
                     {path: 'utilities/text', component: TextComponent},
-                    {path: 'pages/crud', component: AppCrudComponent},
                     {path: 'pages/calendar', component: AppCalendarComponent},
                     {path: 'pages/invoice', component: AppInvoiceComponent},
                     {path: 'pages/help', component: AppHelpComponent},
