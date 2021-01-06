@@ -156,6 +156,7 @@ import { CallsComponent } from './pages/calls/calls.component';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { GpsComponent } from './pages/gps/gps.component';
 import { GpsService } from './services/gps.service';
+import { HereMapComponent } from './shared/map/map.component';
 
 @NgModule({
   imports: [
@@ -293,6 +294,7 @@ import { GpsService } from './services/gps.service';
     BlockCallsComponent,
     CallsComponent,
     GpsComponent,
+    HereMapComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

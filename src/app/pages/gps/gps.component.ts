@@ -9,6 +9,7 @@ import { GpsService } from '../../services/gps.service';
 })
 export class GpsComponent implements OnInit {
 
+  apiKey: string = 'aR8sDNS9rDFjtZjdlGxjlZ-XvLHaGibuTGou6j0XIa0';
   gpsLocations: Gps[];
 
   constructor(private gpsService: GpsService, private breadcrumbService: BreadcrumbService) {
