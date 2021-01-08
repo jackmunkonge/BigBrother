@@ -3,6 +3,7 @@ import { BreadcrumbService } from '../../app.breadcrumb.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Contact } from '../../models/contact';
 import { ContactsService } from '../../services/contacts.service';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -21,7 +22,8 @@ export class SettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private contactsService: ContactsService, private messageService: MessageService,
-              private confirmationService: ConfirmationService, private breadcrumbService: BreadcrumbService) {
+              private confirmationService: ConfirmationService, private breadcrumbService: BreadcrumbService,
+              private dbService: DatabaseService) {
     this.breadcrumbService.setItems([
       {label: 'Settings'}
     ]);
@@ -51,6 +53,9 @@ export class SettingsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.contacts = this.contacts.filter(val => !this.selectedContacts.includes(val));
+        this.selectedContacts.forEach(contact => {
+          this.dbService.getDatabase('contacts').remove({id: contact.id}, { multi: true });
+        });
         this.selectedContacts = null;
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Contacts Deleted', life: 3000});
       }
@@ -69,6 +74,7 @@ export class SettingsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.contacts = this.contacts.filter(val => val.id !== contact.id);
+        this.dbService.getDatabase('contacts').remove({id: contact.id}, { multi: true });
         this.contact = {};
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Contact Deleted', life: 3000});
       }
@@ -86,10 +92,12 @@ export class SettingsComponent implements OnInit {
     if (this.contact.name.trim()) {
       if (this.contact.id) {
         this.contacts[this.findIndexById(this.contact.id)] = this.contact;
+        this.dbService.getDatabase('contacts').update({id: this.contact.id}, this.contact, {});
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Contact Updated', life: 3000});
       }
       else {
         this.contact.id = this.createId();
+        this.dbService.getDatabase('contacts').insert(this.contact);
         this.contacts.push(this.contact);
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Contact Created', life: 3000});
       }

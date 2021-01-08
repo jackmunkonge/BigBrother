@@ -157,6 +157,7 @@ import { GpsComponent } from './pages/gps/gps.component';
 import { GpsService } from './services/gps.service';
 import { HereMapComponent } from './shared/map/map.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { DatabaseService } from './services/database.service';
 
 @NgModule({
   imports: [
@@ -300,7 +301,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
-    TextMessagesService, ChatService, AppService, CallService, GpsService,
+    TextMessagesService, ChatService, AppService, CallService, GpsService, DatabaseService,
   ],
   bootstrap: [AppComponent]
 })
