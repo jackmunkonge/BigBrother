@@ -6,7 +6,8 @@
         <div class="card">
             <p-table #dt [value]="contacts" [columns]="cols" [rows]="10" [paginator]="true"
                      [(selection)]="selectedContacts" [rowHover]="true" dataKey="id"
-                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                     (onRowReorder)="onReorder($event)" sortField="id" sortOrder="1">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-ai-center p-jc-between">
                         <h5 class="p-m-0">Contacts</h5>
@@ -20,6 +21,7 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
+                        <th style="width:3rem"></th>
                         <th style="width: 3rem">
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
@@ -29,8 +31,11 @@
                         <th></th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-contact>
-                    <tr>
+                <ng-template pTemplate="body" let-contact let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td>
+                            <span class="pi pi-bars" pReorderableRowHandle></span>
+                        </td>
                         <td>
                             <p-tableCheckbox [value]="contact"></p-tableCheckbox>
                         </td>

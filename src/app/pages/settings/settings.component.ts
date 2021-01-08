@@ -128,4 +128,24 @@ export class SettingsComponent implements OnInit {
     }
     return id;
   }
+
+  onReorder(event: any) {
+
+    const dragContact = this.contacts[event.dragIndex];
+    const dropContact = this.contacts[event.dropIndex];
+
+    const tempId = dragContact.id;
+
+    dragContact.id = dropContact.id;
+    dropContact.id = tempId;
+
+    this.dbService.getDatabase('contacts').remove({id: dropContact.id})
+      .then(
+        this.dbService.getDatabase('contacts').remove({id: dragContact.id})
+      )
+      .then(
+        this.dbService.getDatabase('contacts').insert([dragContact, dropContact])
+      );
+
+  }
 }
