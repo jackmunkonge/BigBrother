@@ -159,6 +159,7 @@ import { HereMapComponent } from './shared/map/map.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DatabaseService } from './services/database.service';
 import { ContactSettingsComponent } from './pages/settings/contact-settings/contact-settings.component';
+import { TextMessageSettingsComponent } from './pages/settings/text-message-settings/text-message-settings.component';
 
 @NgModule({
   imports: [
@@ -298,6 +299,7 @@ import { ContactSettingsComponent } from './pages/settings/contact-settings/cont
     HereMapComponent,
     SettingsComponent,
     ContactSettingsComponent,
+    TextMessageSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

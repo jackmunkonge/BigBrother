@@ -10,6 +10,7 @@ export class DatabaseService {
 
   constructor() {
     this.databases['contacts'] = this.dbFactory('contacts.db');
+    this.databases['textMessages'] = this.dbFactory('text-messages.db');
   }
 
   getDatabase(name) {

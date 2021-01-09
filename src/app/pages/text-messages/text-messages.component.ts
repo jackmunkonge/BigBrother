@@ -27,7 +27,11 @@ export class TextMessagesComponent implements OnInit {
   ngOnInit() {
     this.textMessagesService.getTextMessages()
       .then(data => this.textMessages = data)
-      .then(data => this.items = this.getTextSelectItems(data))
+      .then(data => this.items = this.getTextSelectItems(data)
+        .sort((a,b) => {
+          return b.value.chat.messages[0].date.getTime() - a.value.chat.messages[0].date.getTime();
+        })
+      )
       .then(() => {
         this.loading = false;
         this.initialSelection = this.items[0].value;
@@ -35,7 +39,7 @@ export class TextMessagesComponent implements OnInit {
   }
 
   private getTextSelectItems(textMessages: TextMessage[]): SelectItem<TextMessage>[] {
-    return textMessages.sort((a,b) => (a.id > b.id) ? 1 : -1).map(text => {
+    return textMessages.map(text => {
       return {
         title: text.name,
         value: text
@@ -43,7 +47,7 @@ export class TextMessagesComponent implements OnInit {
     });
   }
 
-  onChange(chat: TextMessage) {
-    this.selected = chat;
+  onChange(textMessage: TextMessage) {
+    this.selected = textMessage;
   }
 }

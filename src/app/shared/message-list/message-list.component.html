@@ -1,16 +1,16 @@
 <p-scrollPanel [style]="{width: '100%', height: '600px'}" styleClass="custombar1">
   <p-listbox [options]="items" [ngModel]="selection" (ngModelChange)="onSelection($event)">
     <ng-template let-text let-i="index" pTemplate="item">
-      <div class="p-grid p-flex-column" style="width: 100%">
+      <div *ngIf="!!text.value.chat.messages && text.value.chat.messages.length !== 0" class="p-grid p-flex-column" style="width: 100%">
         <h4 class="p-col p-mb-2">{{text.title}}</h4>
-        <p *ngIf="!!text.value.body" class="p-col p-mb-2 p-text-normal">{{text.value.body | ellipsis: [40]}}</p>
-        <div *ngIf="!!text.value.media">
+        <p *ngIf="!!text.value.chat.messages[0]" class="p-col p-mb-2 p-text-normal">{{text.value.chat.messages[0].body | ellipsis: [40]}}</p>
+        <div *ngIf="!!text.value.chat.messages[0].media">
             <p class="p-col p-mb-2 p-text-normal">
-                <i [class]="text.value.media.video ? 'pi pi-video' : 'pi pi-camera'"></i>
-                {{text.value.media.video ? ' Video' : ' Photo'}}
+                <i [class]="text.value.chat.messages[0].media.video ? 'pi pi-video' : 'pi pi-camera'"></i>
+                {{text.value.chat.messages[0].media.video ? ' Video' : ' Photo'}}
             </p>
         </div>
-        <p class="p-col p-text-right p-text-light">{{text.value.date}}</p>
+        <p class="p-col p-text-right p-text-light">{{text.value.chat.messages[0].date | date: 'short'}}</p>
       </div>
     </ng-template>
   </p-listbox>

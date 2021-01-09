@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { TextMessage } from '../models/text-message';
+import { DatabaseService } from './database.service';
 
 @Injectable()
 export class TextMessagesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private dbService: DatabaseService) { }
 
   getTextMessages() {
-    return this.http.get<any>('assets/data/text-messages.json')
-      .toPromise()
-      .then(res => res.data as TextMessage[])
+    return this.dbService.getDatabase('textMessages').find({})
+      .then(res => res as TextMessage[])
       .then(data => data);
   }
 }
