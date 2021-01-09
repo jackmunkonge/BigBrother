@@ -158,6 +158,7 @@ import { GpsService } from './services/gps.service';
 import { HereMapComponent } from './shared/map/map.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DatabaseService } from './services/database.service';
+import { ContactSettingsComponent } from './pages/settings/contact-settings/contact-settings.component';
 
 @NgModule({
   imports: [
@@ -296,6 +297,7 @@ import { DatabaseService } from './services/database.service';
     GpsComponent,
     HereMapComponent,
     SettingsComponent,
+    ContactSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
