@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chat } from '../../models/chat';
 
 @Component({
@@ -6,13 +6,9 @@ import { Chat } from '../../models/chat';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
 
   @Input() chat: Chat;
-  loading = false;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!loading" class="card chat">
+<div *ngIf="chat.messages" class="card chat">
     <ul>
         <li *ngFor="let message of chat.messages">
             <div *ngIf="message.incoming === true" class="p-grid sender">

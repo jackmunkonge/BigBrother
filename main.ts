@@ -57,6 +57,16 @@ function createWindow(): BrowserWindow {
 
   });
 
+  win.webContents.on('did-fail-load', () => {
+    console.log('did-fail-load');
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, 'dist/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+// REDIRECT TO FIRST WEBPAGE AGAIN
+  });
+
   return win;
 }
 

@@ -24,7 +24,7 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
                         <th>Name</th>
-                        <th></th>
+                        <th style="width: 20rem"></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-text>
@@ -52,22 +52,27 @@
 
                 <h4>Chat Details</h4>
 
-                <div class="p-field">
-                    <label for="message-body">Message Body</label>
-                    <textarea id="message-body" pInputTextarea [(ngModel)]="textMessage.chat.messages[0].body" required rows="3" cols="20"></textarea>
-                </div>
-
-                <div class="p-formgrid p-grid">
-                    <div class="p-field p-col">
-                        <label for="date-sent">Date Sent</label>
-                        <p-calendar id="date-sent" inputId="date-sent" dateFormat="dd-mm-yy" [(ngModel)]="textMessage.chat.messages[0].date" required
-                                    showTime="true" hourFormat="24" appendTo="body"></p-calendar>
-                        <small class="p-invalid" *ngIf="submitted && !textMessage.chat.messages[0].date">Sent date is required.</small>
+                <div *ngFor="let message of textMessage.chat.messages">
+                    <div class="p-field">
+                        <label for="message-body">Message Body</label>
+                        <textarea id="message-body" pInputTextarea [(ngModel)]="message.body" required rows="3" cols="20"></textarea>
                     </div>
-                    <div class="p-field p-col">
 
+                    <div class="p-formgrid p-grid">
+                        <div class="p-field p-col">
+                            <label for="date-sent">Date Sent</label>
+                            <p-calendar id="date-sent" inputId="date-sent" dateFormat="dd-mm-yy" [(ngModel)]="message.date" required
+                                        showTime="true" hourFormat="24" appendTo="body"></p-calendar>
+                            <small class="p-invalid" *ngIf="submitted && !message.date">Sent date is required.</small>
+                        </div>
+                        <div class="p-field p-col p-as-center">
+                            <h6>Incoming?</h6>
+                            <p-inputSwitch id="incoming" [(ngModel)]="message.incoming" required></p-inputSwitch>
+                        </div>
                     </div>
                 </div>
+                <button class="p-button-rounded" pButton type="button" label="Add another message" (click)="addMessage()"></button>
+                <button class="p-button-rounded p-button-danger" pButton type="button" label="Remove last message" (click)="removeMessage()"></button>
             </ng-template>
 
             <ng-template pTemplate="footer">
