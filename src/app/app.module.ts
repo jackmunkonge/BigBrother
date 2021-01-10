@@ -165,6 +165,7 @@ import { EventsSettingsComponent } from './pages/settings/events-settings/events
 import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
 import { WhatsappSettingsComponent } from './pages/settings/whatsapp-settings/whatsapp-settings.component';
 import { WhatsappService } from './services/whatsapp.service';
+import { GpsSettingsComponent } from './pages/settings/gps-settings/gps-settings.component';
 
 @NgModule({
   imports: [
@@ -309,6 +310,7 @@ import { WhatsappService } from './services/whatsapp.service';
     EventsSettingsComponent,
     PhotoSettingsComponent,
     WhatsappSettingsComponent,
+    GpsSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

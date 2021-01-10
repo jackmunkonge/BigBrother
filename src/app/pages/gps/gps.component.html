@@ -1,4 +1,4 @@
-<p-table [value]="gpsLocations" dataKey="id">
+<p-table [value]="gpsLocations" dataKey="id" sortField="id">
     <ng-template pTemplate="header">
         <tr>
             <th style="width: 3rem"></th>
@@ -12,14 +12,14 @@
                 <button type="button" pButton pRipple [pRowToggler]="location" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
             </td>
             <td>{{location.address}}</td>
-            <td>{{location.locationDate}}</td>
+            <td>{{location.locationDate | date: 'short'}}</td>
         </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-location>
         <tr>
             <td colspan="3">
                 <div class="p-p-3">
-                    <here-map [_apikey]="apiKey" lat="51.507351" lng="-0.127758" width="100%" height="200px"></here-map>
+                    <here-map [_apikey]="apiKey" [lat]="location.lat" [lng]="location.long" width="100%" height="200px"></here-map>
                 </div>
             </td>
         </tr>
