@@ -130,6 +130,7 @@ import { GpsSettingsComponent } from './pages/settings/gps-settings/gps-settings
 import { BlockedCallsSettingsComponent } from './pages/settings/blocked-calls-settings/blocked-calls-settings.component';
 import { BlockedNumberService } from './services/blocked-number.service';
 import { BlockedAppSettingsComponent } from './pages/settings/blocked-app-settings/blocked-app-settings.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -243,6 +244,7 @@ import { BlockedAppSettingsComponent } from './pages/settings/blocked-app-settin
     GpsSettingsComponent,
     BlockedCallsSettingsComponent,
     BlockedAppSettingsComponent,
+    DashboardComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
