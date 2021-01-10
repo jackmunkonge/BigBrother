@@ -13,6 +13,7 @@ export class DatabaseService {
     this.databases['textMessages'] = this.dbFactory('text-messages.db');
     this.databases['calls'] = this.dbFactory('calls.db');
     this.databases['events'] = this.dbFactory('events.db');
+    this.databases['photos'] = this.dbFactory('photos.db');
   }
 
   getDatabase(name) {

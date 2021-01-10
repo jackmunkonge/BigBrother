@@ -33,12 +33,20 @@ export class GalleryComponent implements OnInit {
   activeIndex: number = 0;
   display: boolean;
 
+  months = ['January', 'February', 'March', 'April', 'May' ,'June', 'July', 'August',
+  'September', 'October', 'November', 'December'];
+
   constructor(private photoService: PhotoService) { }
 
   ngOnInit() {
     this.photoService.getImages().then(images =>{
-      this.images = images
+      this.images = images.sort((a,b) => a.dateCreated.getDate() > b.dateCreated.getDate() ? 1 : -1);
     })
+  }
+
+  getImagesByMonth(month: number) {
+    return this.images.filter(image => image.dateCreated.getMonth() === month)
+      .sort((a,b) => a.dateCreated.getDate() > b.dateCreated.getDate() ? 1 : -1);
   }
 
   imageClick(index: number) {

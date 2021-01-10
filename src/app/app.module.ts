@@ -162,6 +162,7 @@ import { ContactSettingsComponent } from './pages/settings/contact-settings/cont
 import { TextMessageSettingsComponent } from './pages/settings/text-message-settings/text-message-settings.component';
 import { CallSettingsComponent } from './pages/settings/call-settings/call-settings.component';
 import { EventsSettingsComponent } from './pages/settings/events-settings/events-settings.component';
+import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
 
 @NgModule({
   imports: [
@@ -304,6 +305,7 @@ import { EventsSettingsComponent } from './pages/settings/events-settings/events
     TextMessageSettingsComponent,
     CallSettingsComponent,
     EventsSettingsComponent,
+    PhotoSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
