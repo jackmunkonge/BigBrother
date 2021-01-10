@@ -131,6 +131,9 @@ import { BlockedCallsSettingsComponent } from './pages/settings/blocked-calls-se
 import { BlockedNumberService } from './services/blocked-number.service';
 import { BlockedAppSettingsComponent } from './pages/settings/blocked-app-settings/blocked-app-settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProfileSettingsComponent } from './pages/settings/profile-settings/profile-settings.component';
+import { ProfileService } from './services/profile.service';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -245,12 +248,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     BlockedCallsSettingsComponent,
     BlockedAppSettingsComponent,
     DashboardComponent,
+    ProfileSettingsComponent,
+    ProfileComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     EventService, PhotoService, MenuService, BreadcrumbService, ContactsService,
     TextMessagesService, AppService, CallService, GpsService, DatabaseService,
-    WhatsappService, BlockedNumberService,
+    WhatsappService, BlockedNumberService, ProfileService,
   ],
   bootstrap: [AppComponent]
 })

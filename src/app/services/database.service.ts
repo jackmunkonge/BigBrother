@@ -18,6 +18,7 @@ export class DatabaseService {
     this.databases['gps'] = this.dbFactory('gps.db');
     this.databases['blocked-calls'] = this.dbFactory('blocked-calls.db');
     this.databases['apps'] = this.dbFactory('apps.db');
+    this.databases['profile'] = this.dbFactory('profile.db');
   }
 
   getDatabase(name) {
