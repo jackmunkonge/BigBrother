@@ -1,7 +1,7 @@
-<p-fieldset [toggleable]="true">
-    <p-header>January</p-header>
+<p-fieldset *ngFor="let item of [].constructor(12); let i = index" [toggleable]="true">
+    <p-header>{{months[i]}}</p-header>
     <div *ngIf="images" class="p-grid">
-        <div *ngFor="let image of images; let index = index;" class="p-col-2" key="index">
+        <div *ngFor="let image of getImagesByMonth(i); let index = index;" class="p-col-2" key="index">
             <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer" (click)="imageClick(index)"/>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <ng-template pTemplate="caption" let-item>
         <div class="p-d-flex p-jc-between">
             <h4>{{item.title}}</h4>
-            <h6>{{item.dateCreated}}</h6>
+            <h6>{{item.dateCreated | date: 'short'}}</h6>
         </div>
     </ng-template>
 </p-galleria>

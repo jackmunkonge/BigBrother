@@ -3,6 +3,7 @@ import { BreadcrumbService } from '../../app.breadcrumb.service';
 import { SelectItem } from 'primeng/api';
 import { TextMessage } from '../../models/text-message';
 import { TextMessagesService } from '../../services/text-messages.service';
+import { WhatsappService } from '../../services/whatsapp.service';
 
 @Component({
   templateUrl: './whatsapp.component.html',
@@ -17,16 +18,20 @@ export class WhatsAppComponent implements OnInit {
   initialSelection: TextMessage;
   selected: TextMessage;
 
-  constructor(private textMessagesService: TextMessagesService, private breadcrumbService: BreadcrumbService) {
+  constructor(private whatsappService: WhatsappService, private breadcrumbService: BreadcrumbService) {
     this.breadcrumbService.setItems([
       {label: 'WhatsApp'}
     ]);
   }
 
   ngOnInit() {
-    this.textMessagesService.getTextMessages()
+    this.whatsappService.getMessages()
       .then(data => this.textMessages = data)
-      .then(data => this.items = this.getTextSelectItems(data))
+      .then(data => this.items = this.getTextSelectItems(data)
+        .sort((a,b) => {
+          return b.value.chat.messages[0].date.getTime() - a.value.chat.messages[0].date.getTime();
+        })
+      )
       .then(() => {
         this.loading = false;
         this.initialSelection = this.items[0].value;

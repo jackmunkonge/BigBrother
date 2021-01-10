@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Call } from '../models/call';
+import { DatabaseService } from './database.service';
 
 @Injectable()
 export class CallService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private dbService: DatabaseService) { }
 
   getCalls() {
-    return this.http.get<any>('assets/data/calls.json')
-      .toPromise()
-      .then(res => res.data as Call[])
+    return this.dbService.getDatabase('calls').find({}).sort((a,b) => a.id > b.id ? 1 : -1)
+      .then(res => res as Call[])
       .then(data => data);
   }
 }

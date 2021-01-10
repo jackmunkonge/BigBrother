@@ -1,0 +1,93 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-table #dt [value]="gpsLocations" [columns]="cols" [rows]="10" [paginator]="true"
+                     [(selection)]="selectedGpsLocations" [rowHover]="true" dataKey="id"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                     (onRowReorder)="onReorder($event)" sortField="id" sortOrder="1">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Gps Locations</h5>
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+                                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedGpsLocations()" [disabled]="!selectedGpsLocations || !selectedGpsLocations.length"></button>
+                            </ng-template>
+                        </p-toolbar>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:3rem"></th>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Address</th>
+                        <th>Location Date</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-location let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td>
+                            <span class="pi pi-bars" pReorderableRowHandle></span>
+                        </td>
+                        <td>
+                            <p-tableCheckbox [value]="location"></p-tableCheckbox>
+                        </td>
+                        <td>{{location.address}}</td>
+                        <td>{{location.locationDate | date: 'short'}}</td>
+                        <td>{{location.lat}}</td>
+                        <td>{{location.long}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editLocation(location)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteLocation(location)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-dialog [(visible)]="gpsDialog" [style]="{width: '450px'}" header="Contact Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="address">Address</label>
+                    <input type="text" pInputText id="address" [(ngModel)]="gpsLocation.address" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !gpsLocation.address">Address is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="location-date">Location Date</label>
+                    <p-calendar id="location-date" inputId="location-date" dateFormat="dd-mm-yy" [(ngModel)]="gpsLocation.locationDate" required
+                                showTime="true" hourFormat="24" appendTo="body"></p-calendar>
+                    <small class="p-invalid" *ngIf="submitted && !gpsLocation.locationDate">Location date is required.</small>
+
+                </div>
+
+                <div class="p-field">
+                    <label for="lat">Latitude</label>
+                    <input type="text" pInputText id="lat" [(ngModel)]="gpsLocation.lat" required />
+                    <small class="p-invalid" *ngIf="submitted && !gpsLocation.lat">Latitude is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="long">Longitude</label>
+                    <input type="text" pInputText id="long" [(ngModel)]="gpsLocation.long" required />
+                    <small class="p-invalid" *ngIf="submitted && !gpsLocation.long">Longitude is required.</small>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveLocation()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

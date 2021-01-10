@@ -1,15 +1,15 @@
 interface Message {
-  id: string;
-  incoming: boolean;
+  id?: string;
+  incoming?: boolean;
   body?: string;
   media?: {
-    src: string;
-    video: boolean;
+    src?: string;
+    video?: boolean;
   }
-  date: string;
+  date?: Date;
 }
 
 export interface Chat {
-  id: string;
-  messages: Message[];
+  id?: string;
+  messages?: Message[];
 }

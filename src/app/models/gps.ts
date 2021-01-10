@@ -1,5 +1,7 @@
 export interface Gps {
-  id: string;
-  address: string;
-  locationDate: string;
+  id?: string;
+  address?: string;
+  locationDate?: Date;
+  lat?: string;
+  long?: string;
 }

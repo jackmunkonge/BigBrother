@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Gps } from '../models/gps';
+import { DatabaseService } from './database.service';
 
 @Injectable()
 export class GpsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private dbService: DatabaseService) { }
 
   getGpsLocations() {
-    return this.http.get<any>('assets/data/gps.json')
-      .toPromise()
-      .then(res => res.data as Gps[])
+    return this.dbService.getDatabase('gps').find({}).sort((a,b) => a.id > b.id ? 1 : -1)
+      .then(res => res as Gps[])
       .then(data => data);
   }
 }

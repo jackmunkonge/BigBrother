@@ -23,6 +23,7 @@ function createWindow(): BrowserWindow {
       contextIsolation: false,  // false if you want to run 2e2 test with Spectron
       enableRemoteModule : true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
+    show: false,
   });
 
   if (serve) {
@@ -48,6 +49,22 @@ function createWindow(): BrowserWindow {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
+  });
+
+  win.once('ready-to-show', () => {
+
+    win.show();
+
+  });
+
+  win.webContents.on('did-fail-load', () => {
+    console.log('did-fail-load');
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, 'dist/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+// REDIRECT TO FIRST WEBPAGE AGAIN
   });
 
   return win;
