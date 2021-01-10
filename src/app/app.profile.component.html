@@ -1,15 +1,15 @@
-<div class="layout-profile" [ngClass]="{'layout-profile-active':app.inlineMenuActive}">
+<div *ngIf="!!profile" class="layout-profile" [ngClass]="{'layout-profile-active':app.inlineMenuActive}">
     <a href="#" (click)="onClick($event)" class="layout-profile-button">
-        <img src="assets/images/avatar.png" alt="babylon-layout"/>
+        <img [src]="profile.profileUrl" alt="profile-pic"/>
         <div class="layout-profile-userinfo">
-            <span class="layout-profile-name">Arlene Welch</span>
-            <span class="layout-profile-role">Girlfriend</span>
+            <span class="layout-profile-name">{{profile.firstName}} {{profile.lastName}}</span>
+            <span class="layout-profile-role">{{profile.relationship}}</span>
         </div>
         <i class="layout-profile-icon pi pi-angle-down"></i>
     </a>
     <ul class="layout-profile-menu" [@menu]="app.isSlim() ? app.inlineMenuActive ? 'visible' : 'hidden': app.inlineMenuActive ? 'visibleAnimated':'hiddenAnimated'" >
         <li role="menuitem">
-            <a href="#" [attr.tabindex]="!app.inlineMenuActive  ? '-1' : null">
+            <a routerLink="/general/profile" [attr.tabindex]="!app.inlineMenuActive  ? '-1' : null">
                 <i class="pi pi-user"></i>
                 <span>Profile</span>
             </a>

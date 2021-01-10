@@ -12,6 +12,7 @@ import { CallsComponent } from './pages/calls/calls.component';
 import { GpsComponent } from './pages/gps/gps.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
                     {path: 'general/calls', component: CallsComponent},
                     {path: 'general/events', component: EventsComponent},
                     {path: 'general/photos', component: PhotosComponent},
+                    {path: 'general/profile', component: ProfileComponent},
                     {path: 'general/settings', component: SettingsComponent},
                     {path: 'locations/gps', component: GpsComponent},
                     {path: 'socials/whatsapp', component: WhatsAppComponent},

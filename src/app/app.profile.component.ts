@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {trigger, state, transition, style, animate} from '@angular/animations';
 import {AppMainComponent} from './app.main.component';
+import { ProfileService } from './services/profile.service';
+import { Profile } from './models/profile';
 
 @Component({
     selector: 'app-inline-profile',
@@ -27,13 +29,21 @@ import {AppMainComponent} from './app.main.component';
         ])
     ]
 })
-export class AppProfileComponent {
+export class AppProfileComponent implements OnInit {
 
     active: boolean;
+    profile: Profile;
 
-    constructor(public app: AppMainComponent) { }
+    constructor(public app: AppMainComponent, private profileService: ProfileService) { }
 
-    onClick(event) {
+    ngOnInit() {
+      this.profileService.getProfile()
+        .then(profile => {
+          this.profile = profile;
+        });
+    }
+
+  onClick(event) {
         this.app.onInlineMenuClick(event);
         event.preventDefault();
     }

@@ -1,0 +1,44 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <div class="p-d-inline">
+        <h5>Profile Settings</h5>
+        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProfile(profile)"></button>
+    </div>
+
+    <p-dialog [(visible)]="profileDialog" [style]="{width: '450px'}" header="Contact Details" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+            <div class="p-field">
+                <label for="firstName">First Name</label>
+                <input type="text" pInputText id="firstName" [(ngModel)]="profile.firstName" required autofocus />
+                <small class="p-invalid" *ngIf="submitted && !profile.firstName">First name is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="lastName">Last Name</label>
+                <input type="text" pInputText id="lastName" [(ngModel)]="profile.lastName" required />
+                <small class="p-invalid" *ngIf="submitted && !profile.lastName">Last name is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="relationship">Relationship</label>
+                <input type="text" pInputText id="relationship" [(ngModel)]="profile.relationship" required />
+                <small class="p-invalid" *ngIf="submitted && !profile.relationship">Relationship is required.</small>
+            </div>
+
+            <div class="p-field">
+                <label for="profile-url">Profile Url</label>
+                <input type="text" pInputText id="profile-url" [(ngModel)]="profile.profileUrl" required />
+                <small class="p-invalid" *ngIf="submitted && !profile.profileUrl">Profile URL is required.</small>
+            </div>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProfile()"></button>
+        </ng-template>
+    </p-dialog>
+
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+</div>
