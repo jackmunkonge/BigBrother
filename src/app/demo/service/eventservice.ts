@@ -1,15 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DatabaseService } from '../../services/database.service';
+import { CalendarEvent } from '../../models/calendar-event';
 
 @Injectable()
 export class EventService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private dbService: DatabaseService) { }
 
     getEvents() {
-    return this.http.get<any>('assets/demo/data/scheduleevents.json')
-      .toPromise()
-      .then(res => res.data as any[])
+    return this.dbService.getDatabase('events').find({}).sort((a,b) => a.id > b.id ? 1 : -1)
+      .then(res => res as CalendarEvent[])
       .then(data => data);
     }
 }
