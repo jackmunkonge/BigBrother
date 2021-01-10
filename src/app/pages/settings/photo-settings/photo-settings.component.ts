@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DatabaseService } from '../../../services/database.service';
-import { Image } from '../../../demo/domain/image';
-import { PhotoService } from '../../../demo/service/photoservice';
+import { Image } from '../../../models/image';
+import { PhotoService } from '../../../services/photoservice';
 
 @Component({
   selector: 'photo-settings',

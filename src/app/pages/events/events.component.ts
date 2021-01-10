@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { EventService } from '../../demo/service/eventservice';
+import { EventService } from '../../services/eventservice';
 import { BreadcrumbService } from '../../app.breadcrumb.service';
 
 @Component({

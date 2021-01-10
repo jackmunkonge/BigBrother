@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { DatabaseService } from '../../../services/database.service';
 import { CalendarEvent } from '../../../models/calendar-event';
-import { EventService } from '../../../demo/service/eventservice';
+import { EventService } from '../../../services/eventservice';
 
 @Component({
   selector: 'events-settings',
