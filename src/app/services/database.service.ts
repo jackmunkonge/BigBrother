@@ -14,6 +14,7 @@ export class DatabaseService {
     this.databases['calls'] = this.dbFactory('calls.db');
     this.databases['events'] = this.dbFactory('events.db');
     this.databases['photos'] = this.dbFactory('photos.db');
+    this.databases['whatsapp'] = this.dbFactory('whatsapp.db');
   }
 
   getDatabase(name) {

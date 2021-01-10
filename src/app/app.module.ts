@@ -163,6 +163,8 @@ import { TextMessageSettingsComponent } from './pages/settings/text-message-sett
 import { CallSettingsComponent } from './pages/settings/call-settings/call-settings.component';
 import { EventsSettingsComponent } from './pages/settings/events-settings/events-settings.component';
 import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
+import { WhatsappSettingsComponent } from './pages/settings/whatsapp-settings/whatsapp-settings.component';
+import { WhatsappService } from './services/whatsapp.service';
 
 @NgModule({
   imports: [
@@ -306,12 +308,14 @@ import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-se
     CallSettingsComponent,
     EventsSettingsComponent,
     PhotoSettingsComponent,
+    WhatsappSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
     TextMessagesService, ChatService, AppService, CallService, GpsService, DatabaseService,
+    WhatsappService,
   ],
   bootstrap: [AppComponent]
 })
