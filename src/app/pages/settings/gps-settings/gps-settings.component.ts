@@ -39,7 +39,13 @@ export class GpsSettingsComponent implements OnInit {
 
 
   openNew() {
-    this.gpsLocation = {};
+    this.gpsLocation = {
+      id: '',
+      address: '',
+      locationDate: new Date(),
+      lat: '0',
+      long: '0'
+    };
     this.submitted = false;
     this.gpsDialog = true;
   }

@@ -166,6 +166,9 @@ import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-se
 import { WhatsappSettingsComponent } from './pages/settings/whatsapp-settings/whatsapp-settings.component';
 import { WhatsappService } from './services/whatsapp.service';
 import { GpsSettingsComponent } from './pages/settings/gps-settings/gps-settings.component';
+import { BlockedCallsSettingsComponent } from './pages/settings/blocked-calls-settings/blocked-calls-settings.component';
+import { BlockedNumberService } from './services/blocked-number.service';
+import { BlockedAppSettingsComponent } from './pages/settings/blocked-app-settings/blocked-app-settings.component';
 
 @NgModule({
   imports: [
@@ -311,13 +314,15 @@ import { GpsSettingsComponent } from './pages/settings/gps-settings/gps-settings
     PhotoSettingsComponent,
     WhatsappSettingsComponent,
     GpsSettingsComponent,
+    BlockedCallsSettingsComponent,
+    BlockedAppSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     CountryService, CustomerService, EventService, IconService, NodeService,
     PhotoService, ProductService, MenuService, BreadcrumbService, ContactsService,
     TextMessagesService, ChatService, AppService, CallService, GpsService, DatabaseService,
-    WhatsappService,
+    WhatsappService, BlockedNumberService,
   ],
   bootstrap: [AppComponent]
 })

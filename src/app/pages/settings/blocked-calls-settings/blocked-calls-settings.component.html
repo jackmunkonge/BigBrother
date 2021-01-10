@@ -1,0 +1,74 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-table #dt [value]="blockedNumbers" [columns]="cols" [rows]="10" [paginator]="true"
+                     [(selection)]="selectedBlockedNumbers" [rowHover]="true" dataKey="id"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                     (onRowReorder)="onReorder($event)" sortField="id" sortOrder="1">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Blocked Numbers</h5>
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+                                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedBlockedNumbers()" [disabled]="!selectedBlockedNumbers || !selectedBlockedNumbers.length"></button>
+                            </ng-template>
+                        </p-toolbar>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:3rem"></th>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Restricted Number</th>
+                        <th>Blocked</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-number let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td>
+                            <span class="pi pi-bars" pReorderableRowHandle></span>
+                        </td>
+                        <td>
+                            <p-tableCheckbox [value]="number"></p-tableCheckbox>
+                        </td>
+                        <td>{{number.number}}</td>
+                        <td>{{number.blocked}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editBlockedNumber(number)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteBlockedNumber(number)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-dialog [(visible)]="blockedNumberDialog" [style]="{width: '450px'}" header="Blocked Number Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="number">Number</label>
+                    <input type="text" pInputText id="number" [(ngModel)]="blockedNumber.number" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !blockedNumber.number">Number is required.</small>
+                </div>
+
+                <div class="p-field p-col p-as-center">
+                    <h6>Blocked</h6>
+                    <p-inputSwitch id="blocked" [(ngModel)]="blockedNumber.blocked" required></p-inputSwitch>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveBlockedNumber()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-table #dt [value]="apps" [columns]="cols" [rows]="10" [paginator]="true"
+                     [(selection)]="selectedApps" [rowHover]="true" dataKey="id"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                     sortField="id" sortOrder="1">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Apps</h5>
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+                                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedApps()" [disabled]="!selectedApps || !selectedApps.length"></button>
+                            </ng-template>
+                        </p-toolbar>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Blocked</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-app let-index="rowIndex">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="app"></p-tableCheckbox>
+                        </td>
+                        <td>{{app.title}}</td>
+                        <td>
+                            <img [src]="app.imgUrl" alt="app-photo" width="100" class="p-shadow-4" />
+                        </td>
+                        <td>{{app.blocked}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editApp(app)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteApp(app)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-dialog [(visible)]="appDialog" [style]="{width: '450px'}" header="Photo Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="title">Title</label>
+                    <input type="text" pInputText id="title" [(ngModel)]="app.title" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !app.title">Title is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="main-image">Image Link</label>
+                    <input type="text" pInputText id="main-image" [(ngModel)]="app.imgUrl" required />
+                    <small class="p-invalid" *ngIf="submitted && !app.imgUrl">Image link is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <h6>Blocked</h6>
+                    <p-inputSwitch id="blocked" [(ngModel)]="app.blocked" required></p-inputSwitch>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveApp()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

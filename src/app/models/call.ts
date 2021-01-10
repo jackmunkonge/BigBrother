@@ -6,6 +6,5 @@ export interface Call {
   name?: string;
   date?: Date;
   incoming?: boolean;
-  blocked?: boolean;
   audio?: Track[];
 }
