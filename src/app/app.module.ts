@@ -160,6 +160,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { DatabaseService } from './services/database.service';
 import { ContactSettingsComponent } from './pages/settings/contact-settings/contact-settings.component';
 import { TextMessageSettingsComponent } from './pages/settings/text-message-settings/text-message-settings.component';
+import { CallSettingsComponent } from './pages/settings/call-settings/call-settings.component';
 
 @NgModule({
   imports: [
@@ -300,6 +301,7 @@ import { TextMessageSettingsComponent } from './pages/settings/text-message-sett
     SettingsComponent,
     ContactSettingsComponent,
     TextMessageSettingsComponent,
+    CallSettingsComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

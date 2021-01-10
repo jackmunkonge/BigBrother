@@ -1,0 +1,103 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-table #dt [value]="calls" [columns]="cols" [rows]="10" [paginator]="true"
+                     [(selection)]="selectedCalls" [rowHover]="true" dataKey="id"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true"
+                     (onRowReorder)="onReorder($event)" sortField="id" sortOrder="1">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        <h5 class="p-m-0">Calls</h5>
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+                                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedCalls()" [disabled]="!selectedCalls || !selectedCalls.length"></button>
+                            </ng-template>
+                        </p-toolbar>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:3rem"></th>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Date Called</th>
+                        <th>Call Type</th>
+                        <th>Call Record</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-call let-index="rowIndex">
+                    <tr [pReorderableRow]="index">
+                        <td>
+                            <span class="pi pi-bars" pReorderableRowHandle></span>
+                        </td>
+                        <td>
+                            <p-tableCheckbox [value]="call"></p-tableCheckbox>
+                        </td>
+                        <td>{{call.name}}</td>
+                        <td>{{call.number}}</td>
+                        <td>{{call.date | date: 'short'}}</td>
+                        <td>{{call.incoming}}</td>
+                        <td>
+                            <ngx-audio-player  *ngIf="!!call.audio[0].link" [playlist]="call.audio" [displayTitle]="false" [displayPlaylist]="false"
+                                               [displayVolumeControls]="false" [expanded]="false" [disablePositionSlider]="true">
+                            </ngx-audio-player>
+                        </td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editCall(call)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteCall(call)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <p-dialog [(visible)]="callDialog" [style]="{width: '450px'}" header="Call Details" [modal]="true" styleClass="p-fluid">
+            <ng-template pTemplate="content">
+                <div class="p-field">
+                    <label for="name">Name</label>
+                    <input type="text" pInputText id="name" [(ngModel)]="call.name" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !call.name">Name is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="number">Phone Number</label>
+                    <input type="text" pInputText id="number" [(ngModel)]="call.number" required />
+                    <small class="p-invalid" *ngIf="submitted && !call.number">Phone number is required.</small>
+                </div>
+
+                <div class="p-field">
+                    <label for="dateCalled">Date Called</label>
+                    <p-calendar id="dateCalled" inputId="dateCalled" dateFormat="dd-mm-yy" [(ngModel)]="call.date" required
+                                showTime="true" hourFormat="24" appendTo="body"></p-calendar>
+                    <small class="p-invalid" *ngIf="submitted && !call.date">Date called is required.</small>
+
+                </div>
+
+                <div class="p-field">
+                    <h6>Incoming?</h6>
+                    <p-inputSwitch id="incoming" [(ngModel)]="call.incoming" required></p-inputSwitch>
+                </div>
+
+                <div class="p-field">
+                    <label for="audio-link">Audio Link</label>
+                    <input type="text" pInputText id="audio-link" [(ngModel)]="call.audio[0].link" />
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+                <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveCall()"></button>
+            </ng-template>
+        </p-dialog>
+
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

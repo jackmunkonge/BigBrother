@@ -3,7 +3,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TextMessage } from '../../../models/text-message';
 import { DatabaseService } from '../../../services/database.service';
 import { TextMessagesService } from '../../../services/text-messages.service';
-import { Chat } from '../../../models/chat';
 
 @Component({
   selector: 'text-message-settings',

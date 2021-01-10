@@ -11,6 +11,7 @@ export class DatabaseService {
   constructor() {
     this.databases['contacts'] = this.dbFactory('contacts.db');
     this.databases['textMessages'] = this.dbFactory('text-messages.db');
+    this.databases['calls'] = this.dbFactory('calls.db');
   }
 
   getDatabase(name) {
@@ -19,7 +20,7 @@ export class DatabaseService {
 
   private dbFactory(fileName) {
     return Datastore.create({
-      filename: `${AppConfig.production ? app.getAppPath() : '.'}/data/${fileName}`,
+      filename: `${AppConfig.production ? app.getPath("userData") : '.'}/data/${fileName}`,
       timestampData: true,
       autoload: true
     });
