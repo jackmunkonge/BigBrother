@@ -11,6 +11,7 @@ import { BlockCallsComponent } from './pages/block-calls/block-calls.component';
 import { CallsComponent } from './pages/calls/calls.component';
 import { GpsComponent } from './pages/gps/gps.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
-                    {path: '', component: ContactsComponent},
+                    {path: '', component: DashboardComponent},
                     {path: 'general/contacts', component: ContactsComponent},
                     {path: 'general/text-messages', component: TextMessagesComponent},
                     {path: 'general/calls', component: CallsComponent},
