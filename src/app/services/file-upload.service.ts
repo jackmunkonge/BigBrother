@@ -34,4 +34,24 @@ export class FileUploadService {
   deleteAudioFile(path: string) {
     this.deleteFile(path);
   }
+
+  saveImageFile(path: string, name: string): any {
+    return new Promise((resolve, reject) => {
+      this.copyFile(path, `${app.getPath("userData")}/photos/${name}`)
+        .then(() => {
+          resolve({
+            path: `${app.getPath("userData")}/photos/${name}`,
+            name: name
+          });
+        })
+        .catch(err => {
+          reject(err);
+        });
+
+    })
+  }
+
+  deleteImageFile(path: string) {
+    this.deleteFile(path);
+  }
 }

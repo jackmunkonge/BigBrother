@@ -3,11 +3,13 @@
     <ng-template let-text let-i="index" pTemplate="item">
       <div *ngIf="!!text.value.chat.messages && text.value.chat.messages.length !== 0" class="p-grid p-flex-column" style="width: 100%">
         <h4 class="p-col p-mb-2">{{text.title}}</h4>
-        <p *ngIf="!!text.value.chat.messages[0]" class="p-col p-mb-2 p-text-normal">{{text.value.chat.messages[0].body | ellipsis: [40]}}</p>
-        <div *ngIf="!!text.value.chat.messages[0].photo">
+        <p *ngIf="!!text.value.chat.messages[text.value.chat.messages.length - 1]" class="p-col p-mb-2 p-text-normal">
+            {{text.value.chat.messages[text.value.chat.messages.length - 1].body | ellipsis: [40]}}
+        </p>
+        <div *ngIf="!!text.value.chat.messages[text.value.chat.messages.length - 1].photo && text.value.chat.messages[text.value.chat.messages.length - 1].photo.src !== ''">
             <p class="p-col p-mb-2 p-text-normal"><i [class]="'pi pi-camera'"></i>{{' Photo'}}</p>
         </div>
-        <p class="p-col p-text-right p-text-light">{{text.value.chat.messages[0].date | date: 'short'}}</p>
+        <p class="p-col p-text-right p-text-light">{{text.value.chat.messages[text.value.chat.messages.length - 1].date | date: 'short'}}</p>
       </div>
     </ng-template>
   </p-listbox>

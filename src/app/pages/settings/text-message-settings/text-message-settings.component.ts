@@ -3,6 +3,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TextMessage } from '../../../models/text-message';
 import { DatabaseService } from '../../../services/database.service';
 import { TextMessagesService } from '../../../services/text-messages.service';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
   selector: 'text-message-settings',
@@ -12,6 +13,7 @@ import { TextMessagesService } from '../../../services/text-messages.service';
 })
 export class TextMessageSettingsComponent implements OnInit {
 
+  uploadedFile: any;
   textMessageDialog: boolean;
   textMessages: TextMessage[];
   textMessage: TextMessage;
@@ -22,7 +24,8 @@ export class TextMessageSettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private confirmationService: ConfirmationService, private dbService: DatabaseService,
-              private textMessagesService: TextMessagesService, private messageService: MessageService) { }
+              private textMessagesService: TextMessagesService, private messageService: MessageService,
+              private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.textMessagesService.getTextMessages()
@@ -46,7 +49,10 @@ export class TextMessageSettingsComponent implements OnInit {
             id: '',
             incoming: false,
             body: '',
-            date: new Date()
+            date: new Date(),
+            photo: {
+              src: ''
+            }
           }
         ],
       }
@@ -63,6 +69,11 @@ export class TextMessageSettingsComponent implements OnInit {
       accept: () => {
         this.textMessages = this.textMessages.filter(val => !this.selectedTextMessages.includes(val));
         this.selectedTextMessages.forEach(message => {
+          message.chat.messages.forEach(item => {
+            if (item.photo) {
+              this.fileUploadService.deleteImageFile(item.photo.src);
+            }
+          });
           this.dbService.getDatabase('textMessages').remove({id: message.id}, { multi: true });
         });
         this.selectedTextMessages = null;
@@ -83,6 +94,11 @@ export class TextMessageSettingsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.textMessages = this.textMessages.filter(val => val.id !== text.id);
+        text.chat.messages.forEach(item => {
+          if (item.photo) {
+            this.fileUploadService.deleteImageFile(item.photo.src);
+          }
+        });
         this.dbService.getDatabase('textMessages').remove({id: text.id}, { multi: true });
         this.textMessage = {};
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Text Message Deleted', life: 3000});
@@ -147,14 +163,33 @@ export class TextMessageSettingsComponent implements OnInit {
       id: '',
       incoming: false,
       body: '',
-      date: new Date()
+      date: new Date(),
+      photo: {
+        src: ''
+      }
     })
   }
 
-  removeMessage() {
+  removeMessage(messageIndex: string) {
     if (this.textMessage.chat.messages.length > 1) {
-      this.textMessage.chat.messages.shift();
+      this.textMessage.chat.messages.splice(Number(messageIndex), 1);
+      this.fileUploadService.deleteImageFile(this.textMessage.chat.messages[messageIndex].photo.src);
     }
   }
 
+  onUpload(event, chatMessageIndex) {
+    this.fileUploadService.saveImageFile(event.files[0].path, event.files[0].name)
+      .then(file => {
+        this.uploadedFile = event.files[0];
+        if (!!this.textMessage.chat.messages[chatMessageIndex].photo && this.textMessage.chat.messages[chatMessageIndex].photo.src !== '') {
+          this.fileUploadService.deleteImageFile(this.textMessage.chat.messages[chatMessageIndex].photo.src);
+        }
+        this.textMessage.chat.messages[chatMessageIndex].photo.src = file.path;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
+      .catch(err => {
+        console.log(err);
+        this.messageService.add({severity: 'danger', summary: 'Upload Error', detail: 'Could not upload file'});
+      });
+  }
 }

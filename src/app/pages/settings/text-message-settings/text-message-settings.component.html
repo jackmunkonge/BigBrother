@@ -50,29 +50,44 @@
                     <small class="p-invalid" *ngIf="submitted && !textMessage.name">Name is required.</small>
                 </div>
 
-                <h4>Chat Details</h4>
+                <div *ngFor="let message of textMessage.chat.messages; let i=index">
+                    <div class="card">
+                        <h4 class="p-text-bold">Message {{i+1}}
+                            <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="removeMessage(i)"></button>
+                        </h4>
+                        <div class="p-field">
+                            <label for="message-body">Message Body</label>
+                            <textarea id="message-body" pInputTextarea [(ngModel)]="message.body" required rows="3" cols="20"></textarea>
+                        </div>
 
-                <div *ngFor="let message of textMessage.chat.messages">
-                    <div class="p-field">
-                        <label for="message-body">Message Body</label>
-                        <textarea id="message-body" pInputTextarea [(ngModel)]="message.body" required rows="3" cols="20"></textarea>
+                        <div class="p-field">
+                            <h5>Image Upload</h5>
+                            <p-fileUpload name="image-upload" (uploadHandler)="onUpload($event, i)"
+                                          accept="image/*" maxFileSize="100000000" customUpload="true">
+                                <ng-template pTemplate="content">
+                                    <ul *ngIf="uploadedFile">
+                                        <li>{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                                    </ul>
+                                </ng-template>
+                            </p-fileUpload>
+                        </div>
+
+                        <div class="p-formgrid p-grid">
+                            <div class="p-field p-col">
+                                <label for="date-sent">Date Sent</label>
+                                <p-calendar id="date-sent" inputId="date-sent" dateFormat="dd-mm-yy" [(ngModel)]="message.date" required
+                                            showTime="true" hourFormat="24" appendTo="body"></p-calendar>
+                                <small class="p-invalid" *ngIf="submitted && !message.date">Sent date is required.</small>
+                            </div>
+                            <div class="p-field p-col p-as-center">
+                                <h6>Incoming?</h6>
+                                <p-inputSwitch id="incoming" [(ngModel)]="message.incoming" required></p-inputSwitch>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="p-formgrid p-grid">
-                        <div class="p-field p-col">
-                            <label for="date-sent">Date Sent</label>
-                            <p-calendar id="date-sent" inputId="date-sent" dateFormat="dd-mm-yy" [(ngModel)]="message.date" required
-                                        showTime="true" hourFormat="24" appendTo="body"></p-calendar>
-                            <small class="p-invalid" *ngIf="submitted && !message.date">Sent date is required.</small>
-                        </div>
-                        <div class="p-field p-col p-as-center">
-                            <h6>Incoming?</h6>
-                            <p-inputSwitch id="incoming" [(ngModel)]="message.incoming" required></p-inputSwitch>
-                        </div>
-                    </div>
                 </div>
-                <button class="p-button-rounded" pButton type="button" label="Add another message" (click)="addMessage()"></button>
-                <button class="p-button-rounded p-button-danger" pButton type="button" label="Remove last message" (click)="removeMessage()"></button>
+                <button class="p-button-rounded p-mb-3" pButton type="button" label="Add another message" (click)="addMessage()"></button>
             </ng-template>
 
             <ng-template pTemplate="footer">
