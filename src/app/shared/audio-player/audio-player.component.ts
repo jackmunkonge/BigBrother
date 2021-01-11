@@ -26,22 +26,21 @@ export class AudioPlayerComponent implements OnInit, OnChanges {
       switch (propName) {
         case 'link':
           console.log('Original Link: ', this.link);
-          this.playlist[0].link = this.convertAudioLink(this.link);
+          this.playlist[0].link = this.checkAudioLink(this.link);
           console.log('Converted Link: ', this.playlist[0].link);
           break;
       }
     }
   }
 
-  convertAudioLink(link: string) {
-    let newLink = `${app.getPath("userData")}/${link}`;
-    if (fs.existsSync(newLink)) {
+  checkAudioLink(link: string) {
+    if (fs.existsSync(link)) {
       console.log('File exists')
     } else {
       console.log('File does not exist')
-      newLink = '';
+      return '';
     }
-    return newLink;
+    return link;
   }
 
 }

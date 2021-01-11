@@ -3,6 +3,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DatabaseService } from '../../../services/database.service';
 import { Call } from '../../../models/call';
 import { CallService } from '../../../services/call.service';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
   selector: 'call-settings',
@@ -12,6 +13,7 @@ import { CallService } from '../../../services/call.service';
 })
 export class CallSettingsComponent implements OnInit {
 
+  uploadedFile: any;
   callDialog: boolean;
   calls: Call[];
   call: Call;
@@ -22,7 +24,8 @@ export class CallSettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private confirmationService: ConfirmationService, private dbService: DatabaseService,
-              private callService: CallService, private messageService: MessageService) { }
+              private callService: CallService, private messageService: MessageService,
+              private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.callService.getCalls()
@@ -81,6 +84,7 @@ export class CallSettingsComponent implements OnInit {
       accept: () => {
         this.calls = this.calls.filter(val => val.id !== call.id);
         this.dbService.getDatabase('calls').remove({id: call.id}, { multi: true });
+        this.fileUploadService.deleteAudioFile(call.audioLink);
         this.call = {};
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Call Deleted', life: 3000});
       }
@@ -153,5 +157,19 @@ export class CallSettingsComponent implements OnInit {
         this.dbService.getDatabase('calls').insert([dragCall, dropCall])
       );
 
+  }
+
+  onUpload(event) {
+    this.fileUploadService.saveAudioFile(event.files[0].path, event.files[0].name)
+      .then(file => {
+        this.uploadedFile = event.files[0];
+        this.fileUploadService.deleteAudioFile(this.call.audioLink);
+        this.call.audioLink = file.path;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
+      .catch(err => {
+        console.log(err);
+        this.messageService.add({severity: 'danger', summary: 'Upload Error', detail: 'Could not upload file'});
+      });
   }
 }

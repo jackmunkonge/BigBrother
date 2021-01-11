@@ -83,10 +83,16 @@
                     <h6>Incoming?</h6>
                     <p-inputSwitch id="incoming" [(ngModel)]="call.incoming" required></p-inputSwitch>
                 </div>
-
                 <div class="p-field">
-                    <label for="audio-link">Audio Link</label>
-                    <input type="text" pInputText id="audio-link" [(ngModel)]="call.audioLink" />
+                    <h5>Audio Upload</h5>
+                    <p-fileUpload name="audio-upload" (uploadHandler)="onUpload($event)"
+                                  accept="audio/*" maxFileSize="100000000" customUpload="true">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFile">
+                                <li>{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
                 </div>
             </ng-template>
 

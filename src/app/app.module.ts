@@ -135,6 +135,7 @@ import { ProfileSettingsComponent } from './pages/settings/profile-settings/prof
 import { ProfileService } from './services/profile.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AudioPlayerComponent } from './shared/audio-player/audio-player.component';
+import { FileUploadService } from './services/file-upload.service';
 
 @NgModule({
   imports: [
@@ -257,7 +258,7 @@ import { AudioPlayerComponent } from './shared/audio-player/audio-player.compone
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     EventService, PhotoService, MenuService, BreadcrumbService, ContactsService,
     TextMessagesService, AppService, CallService, GpsService, DatabaseService,
-    WhatsappService, BlockedNumberService, ProfileService,
+    WhatsappService, BlockedNumberService, ProfileService, FileUploadService,
   ],
   bootstrap: [AppComponent]
 })

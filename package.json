@@ -87,6 +87,8 @@
     "@fullcalendar/interaction": "4.0.2",
     "@fullcalendar/timegrid": "4.0.1",
     "chart.js": "2.7.3",
+    "electron-fs-extra": "1.0.0",
+    "fs-extra": "9.0.1",
     "material-design-icons": "3.0.1",
     "nedb-promises": "4.1.1",
     "ngx-audio-player": "8.1.1",
