@@ -41,7 +41,7 @@
                         </td>
                         <td>{{contact.name}}</td>
                         <td>{{contact.number}}</td>
-                        <td>{{contact.lastCalled}}</td>
+                        <td>{{contact.lastCalled | date: 'short': '': 'en'}}</td>
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editContact(contact)"></button>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteContact(contact)"></button>

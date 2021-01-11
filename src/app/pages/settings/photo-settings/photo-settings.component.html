@@ -43,7 +43,7 @@
                             <img [src]="photo.thumbnailImageSrc" alt="photo" width="100" class="p-shadow-4" />
                         </td>
                         <td>{{photo.title}}</td>
-                        <td>{{photo.dateCreated | date: 'short'}}</td>
+                        <td>{{photo.dateCreated | date: 'short': '': 'en'}}</td>
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editPhoto(photo)"></button>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deletePhoto(photo)"></button>
