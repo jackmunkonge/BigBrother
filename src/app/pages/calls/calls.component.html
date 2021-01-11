@@ -24,9 +24,7 @@
             <td>{{call.date | date: 'short'}}</td>
             <td><h5>{{call.incoming ? 'Incoming' : 'Outgoing'}}</h5></td>
             <td>
-                <ngx-audio-player  *ngIf="!!call.audio && call.audio[0].link" [playlist]="call.audio" [displayTitle]="false" [displayPlaylist]="false"
-                                  [displayVolumeControls]="false" [expanded]="false" [disablePositionSlider]="true">
-                </ngx-audio-player>
+                <audio-player [link]="call.audioLink"></audio-player>
             </td>
         </tr>
     </ng-template>

@@ -46,10 +46,7 @@ export class CallSettingsComponent implements OnInit {
       name: '',
       date: new Date(),
       incoming: true,
-      audio: [{
-        title: '',
-        link: ''
-      }]
+      audioLink: ''
     };
     this.submitted = false;
     this.callDialog = true;
@@ -100,7 +97,7 @@ export class CallSettingsComponent implements OnInit {
 
     if (this.call.name.trim()) {
       if (this.call.id) {
-        this.call[this.findIndexById(this.call.id)] = this.call;
+        this.calls[this.findIndexById(this.call.id)] = this.call;
         this.dbService.getDatabase('calls').update({id: this.call.id}, this.call, {});
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Call Updated', life: 3000});
       }

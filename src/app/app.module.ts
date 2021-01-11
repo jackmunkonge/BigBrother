@@ -134,6 +134,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileSettingsComponent } from './pages/settings/profile-settings/profile-settings.component';
 import { ProfileService } from './services/profile.service';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AudioPlayerComponent } from './shared/audio-player/audio-player.component';
 
 @NgModule({
   imports: [
@@ -250,6 +251,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     DashboardComponent,
     ProfileSettingsComponent,
     ProfileComponent,
+    AudioPlayerComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

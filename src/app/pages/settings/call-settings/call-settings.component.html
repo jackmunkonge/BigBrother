@@ -45,10 +45,8 @@
                         <td>{{call.number}}</td>
                         <td>{{call.date | date: 'short'}}</td>
                         <td>{{call.incoming}}</td>
-                        <td>
-                            <ngx-audio-player  *ngIf="!!call.audio[0].link" [playlist]="call.audio" [displayTitle]="false" [displayPlaylist]="false"
-                                               [displayVolumeControls]="false" [expanded]="false" [disablePositionSlider]="true">
-                            </ngx-audio-player>
+                        <td *ngIf="!callDialog">
+                            <audio-player [link]="call.audioLink"></audio-player>
                         </td>
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editCall(call)"></button>
@@ -88,7 +86,7 @@
 
                 <div class="p-field">
                     <label for="audio-link">Audio Link</label>
-                    <input type="text" pInputText id="audio-link" [(ngModel)]="call.audio[0].link" />
+                    <input type="text" pInputText id="audio-link" [(ngModel)]="call.audioLink" />
                 </div>
             </ng-template>
 

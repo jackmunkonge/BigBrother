@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, protocol } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -21,7 +21,8 @@ function createWindow(): BrowserWindow {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
       contextIsolation: false,  // false if you want to run 2e2 test with Spectron
-      enableRemoteModule : true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
+      enableRemoteModule : true, // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
+      webSecurity: false
     },
     show: false,
   });
@@ -76,6 +77,21 @@ try {
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
   app.on('ready', () => setTimeout(createWindow, 400));
+
+  app.whenReady().then(() => {
+      // Name the protocol whatever you want
+      const protocolName = 'media'
+
+      protocol.registerFileProtocol(protocolName, (request, callback) => {
+        const url = request.url.replace(`${protocolName}://`, '')
+        try {
+          return callback(decodeURIComponent(url))
+        } catch (error) {
+          // Handle the error as needed
+          console.error(error)
+        }
+      })
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
