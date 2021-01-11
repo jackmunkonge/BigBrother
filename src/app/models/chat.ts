@@ -2,9 +2,8 @@ interface Message {
   id?: string;
   incoming?: boolean;
   body?: string;
-  media?: {
+  photo?: {
     src?: string;
-    video?: boolean;
   }
   date?: Date;
 }

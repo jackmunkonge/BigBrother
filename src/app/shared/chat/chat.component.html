@@ -7,16 +7,16 @@
                 </div>
                 <div class="p-col">
                     <div *ngIf="!!message.body" class="chat-message">{{message.body}}</div>
-                    <div *ngIf="!!message.media" class="chat-message">
-                        <img height="200" width="200" [src]="message.media.src" [alt]="message.id"/>
+                    <div *ngIf="!!message.photo" class="chat-message">
+                        <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
                     </div>
                 </div>
             </div>
             <div *ngIf="message.incoming === false" class="p-grid recipient">
                 <div class="p-col">
                     <div *ngIf="!!message.body" class="chat-message">{{message.body}}</div>
-                    <div *ngIf="!!message.media" class="chat-message">
-                        <img height="200" width="200" [src]="message.media.src" [alt]="message.id"/>
+                    <div *ngIf="!!message.photo" class="chat-message">
+                        <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
                     </div>
                 </div>
                 <div class="p-col-fixed">
