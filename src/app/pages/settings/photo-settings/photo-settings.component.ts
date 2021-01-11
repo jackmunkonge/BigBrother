@@ -3,6 +3,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DatabaseService } from '../../../services/database.service';
 import { Image } from '../../../models/image';
 import { PhotoService } from '../../../services/photoservice';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
   selector: 'photo-settings',
@@ -11,6 +12,10 @@ import { PhotoService } from '../../../services/photoservice';
   providers: [MessageService, ConfirmationService]
 })
 export class PhotoSettingsComponent implements OnInit {
+
+  uploadedMainFile: any;
+  uploadedThumbnailFile: any;
+
   photoDialog: boolean;
   photos: Image[];
   photo: Image;
@@ -21,7 +26,8 @@ export class PhotoSettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private confirmationService: ConfirmationService, private dbService: DatabaseService,
-              private photoService: PhotoService, private messageService: MessageService) { }
+              private photoService: PhotoService, private messageService: MessageService,
+              private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.photoService.getImages()
@@ -58,6 +64,8 @@ export class PhotoSettingsComponent implements OnInit {
       accept: () => {
         this.photos = this.photos.filter(val => !this.selectedPhotos.includes(val));
         this.selectedPhotos.forEach(photo => {
+          this.fileUploadService.deleteImageFile(photo.previewImageSrc);
+          this.fileUploadService.deleteImageFile(photo.thumbnailImageSrc);
           this.dbService.getDatabase('photos').remove({id: photo.id}, { multi: true });
         });
         this.selectedPhotos = null;
@@ -78,6 +86,8 @@ export class PhotoSettingsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.photos = this.photos.filter(val => val.id !== photo.id);
+        this.fileUploadService.deleteImageFile(photo.previewImageSrc);
+        this.fileUploadService.deleteImageFile(photo.thumbnailImageSrc);
         this.dbService.getDatabase('photos').remove({id: photo.id}, { multi: true });
         this.photo = {};
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Photo Deleted', life: 3000});
@@ -132,6 +142,21 @@ export class PhotoSettingsComponent implements OnInit {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return id;
+  }
+
+  onUpload(event, type: string) {
+    const src = (type === 'main') ? 'previewImageSrc': 'thumbnailImageSrc';
+    this.fileUploadService.saveImageFile(event.files[0].path, event.files[0].name)
+      .then(file => {
+        this.uploadedMainFile = event.files[0];
+        this.fileUploadService.deleteImageFile(this.photo[src]);
+        this.photo[src] = file.path;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
+      .catch(err => {
+        console.log(err);
+        this.messageService.add({severity: 'danger', summary: 'Upload Error', detail: 'Could not upload file'});
+      });
   }
 
 }

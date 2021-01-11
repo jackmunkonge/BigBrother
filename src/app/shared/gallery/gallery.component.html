@@ -2,7 +2,7 @@
     <p-header>{{months[i]}}</p-header>
     <div *ngIf="images" class="p-grid">
         <div *ngFor="let image of getImagesByMonth(i); let index = index;" class="p-col-2" key="index">
-            <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer" (click)="imageClick(index)"/>
+            <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="cursor: pointer" width="100" class="p-shadow-4" (click)="imageClick(index)"/>
         </div>
     </div>
 </p-fieldset>
@@ -11,11 +11,11 @@
             [circular]="false" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="true"
             [baseZIndex]="100000">
     <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="width: 100%; display: block;"/>
+        <img [src]="item.previewImageSrc" style="object-fit: contain; height: 400px; display: block;"/>
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
         <div class="p-grid p-nogutter p-justify-center">
-            <img [src]="item.thumbnailImageSrc" style="display: block;"/>
+            <img [src]="item.thumbnailImageSrc" style="display: block; " width="100"/>
         </div>
     </ng-template>
     <ng-template pTemplate="caption" let-item>

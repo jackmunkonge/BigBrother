@@ -62,15 +62,27 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="main-image">Main Image Link</label>
-                    <input type="text" pInputText id="main-image" [(ngModel)]="photo.previewImageSrc" required />
-                    <small class="p-invalid" *ngIf="submitted && !photo.previewImageSrc">Main image link is required.</small>
+                    <h5>Main Image Link</h5>
+                    <p-fileUpload name="main-upload" (uploadHandler)="onUpload($event, 'main')"
+                                  accept="image/*" maxFileSize="1000000" customUpload="true">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedMainFile">
+                                <li>{{uploadedMainFile.name}} - {{uploadedMainFile.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
                 </div>
 
                 <div class="p-field">
-                    <label for="thumbnail-image">Thumbnail Image Link</label>
-                    <input type="text" pInputText id="thumbnail-image" [(ngModel)]="photo.thumbnailImageSrc" required />
-                    <small class="p-invalid" *ngIf="submitted && !photo.thumbnailImageSrc">Thumbnail image link is required.</small>
+                    <h5>Thumbnail Image Link</h5>
+                    <p-fileUpload name="thumbnail-upload" (uploadHandler)="onUpload($event, 'thumbnail')"
+                                  accept="image/*" maxFileSize="1000000" customUpload="true">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedThumbnailFile">
+                                <li>{{uploadedThumbnailFile.name}} - {{uploadedThumbnailFile.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
                 </div>
 
                 <div class="p-field">
