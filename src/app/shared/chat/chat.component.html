@@ -2,9 +2,6 @@
     <ul>
         <li *ngFor="let message of chat.messages">
             <div *ngIf="message.incoming === true" class="p-grid sender">
-                <div class="p-col-fixed">
-                    <img src="assets/images/avatar-john.png" alt="babylon-layout" />
-                </div>
                 <div class="p-col">
                     <div *ngIf="!!message.body" class="chat-message">{{message.body}}</div>
                     <div *ngIf="!!message.photo && message.photo.src !== ''" class="chat-message">
@@ -18,9 +15,6 @@
                     <div *ngIf="!!message.photo && message.photo.src !== ''" class="chat-message">
                         <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
                     </div>
-                </div>
-                <div class="p-col-fixed">
-                    <img src="assets/images/avatar-john.png" alt="babylon-layout" />
                 </div>
             </div>
         </li>

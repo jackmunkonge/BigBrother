@@ -9,7 +9,7 @@
                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-ai-center p-jc-between">
-                        <h5 class="p-m-0">Text Messages</h5>
+                        <h5 class="p-m-0">{{type === 'whatsapp' ? 'WhatsApp Messages' : 'Text Messages'}}</h5>
                         <p-toolbar styleClass="p-mb-4">
                             <ng-template pTemplate="left">
                                 <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>

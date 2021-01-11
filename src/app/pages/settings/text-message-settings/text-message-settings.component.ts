@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { TextMessage } from '../../../models/text-message';
 import { DatabaseService } from '../../../services/database.service';
@@ -12,6 +12,9 @@ import { FileUploadService } from '../../../services/file-upload.service';
   providers: [MessageService, ConfirmationService]
 })
 export class TextMessageSettingsComponent implements OnInit {
+
+  @Input() type: string = 'text';
+  databaseName: string = 'textMessages';
 
   uploadedFile: any;
   textMessageDialog: boolean;
@@ -28,8 +31,18 @@ export class TextMessageSettingsComponent implements OnInit {
               private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
-    this.textMessagesService.getTextMessages()
-      .then(data => this.textMessages = data);
+    switch (this.type) {
+      case 'text':
+        this.textMessagesService.getTextMessages()
+          .then(data => this.textMessages = data);
+        this.databaseName = 'textMessages';
+        break;
+      case 'whatsapp':
+        this.textMessagesService.getWhatsAppMessages()
+          .then(data => this.textMessages = data);
+        this.databaseName = 'whatsapp';
+        break;
+    }
 
     this.cols = [
       {field: 'name', header: 'Name'}
@@ -63,7 +76,7 @@ export class TextMessageSettingsComponent implements OnInit {
 
   deleteSelectedTextMessages() {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete the selected text messages?',
+      message: 'Are you sure you want to delete the selected messages?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -74,10 +87,10 @@ export class TextMessageSettingsComponent implements OnInit {
               this.fileUploadService.deleteImageFile(item.photo.src);
             }
           });
-          this.dbService.getDatabase('textMessages').remove({id: message.id}, { multi: true });
+          this.dbService.getDatabase(this.databaseName).remove({id: message.id}, { multi: true });
         });
         this.selectedTextMessages = null;
-        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Text Messages Deleted', life: 3000});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Messages Deleted', life: 3000});
       }
     });
   }
@@ -99,9 +112,9 @@ export class TextMessageSettingsComponent implements OnInit {
             this.fileUploadService.deleteImageFile(item.photo.src);
           }
         });
-        this.dbService.getDatabase('textMessages').remove({id: text.id}, { multi: true });
+        this.dbService.getDatabase(this.databaseName).remove({id: text.id}, { multi: true });
         this.textMessage = {};
-        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Text Message Deleted', life: 3000});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Message Deleted', life: 3000});
       }
     });
   }
@@ -117,8 +130,8 @@ export class TextMessageSettingsComponent implements OnInit {
     if (this.textMessage.name.trim()) {
       if (this.textMessage.id) {
         this.textMessages[this.findIndexById(this.textMessage.id)] = this.textMessage;
-        this.dbService.getDatabase('textMessages').update({id: this.textMessage.id}, this.textMessage, {});
-        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Text Message Updated', life: 3000});
+        this.dbService.getDatabase(this.databaseName).update({id: this.textMessage.id}, this.textMessage, {});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Message Updated', life: 3000});
       }
       else {
         this.textMessage.id = this.createId();
@@ -126,9 +139,9 @@ export class TextMessageSettingsComponent implements OnInit {
         this.textMessage.chat.messages.forEach(message => {
           message.id = this.createId();
         });
-        this.dbService.getDatabase('textMessages').insert(this.textMessage);
+        this.dbService.getDatabase(this.databaseName).insert(this.textMessage);
         this.textMessages.push(this.textMessage);
-        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Text Message Created', life: 3000});
+        this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Message Created', life: 3000});
       }
 
       this.textMessages = [...this.textMessages];

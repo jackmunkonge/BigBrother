@@ -106,7 +106,7 @@ import { MessageListComponent } from './shared/message-list/message-list.compone
 import { ChatComponent } from './shared/chat/chat.component';
 import { GalleryComponent } from './shared/gallery/gallery.component';
 import { PhotosComponent } from './pages/photos/photos.component';
-import { WhatsAppComponent } from './pages/whatsapp/whatsapp.component';
+import { WhatsappComponent } from './pages/whatsapp/whatsapp.component';
 import { EventsComponent } from './pages/events/events.component';
 import { BlockApplicationsComponent } from './pages/block-applications/block-applications.component';
 import { AppService } from './services/app.service';
@@ -124,8 +124,6 @@ import { TextMessageSettingsComponent } from './pages/settings/text-message-sett
 import { CallSettingsComponent } from './pages/settings/call-settings/call-settings.component';
 import { EventsSettingsComponent } from './pages/settings/events-settings/events-settings.component';
 import { PhotoSettingsComponent } from './pages/settings/photo-settings/photo-settings.component';
-import { WhatsappSettingsComponent } from './pages/settings/whatsapp-settings/whatsapp-settings.component';
-import { WhatsappService } from './services/whatsapp.service';
 import { GpsSettingsComponent } from './pages/settings/gps-settings/gps-settings.component';
 import { BlockedCallsSettingsComponent } from './pages/settings/blocked-calls-settings/blocked-calls-settings.component';
 import { BlockedNumberService } from './services/blocked-number.service';
@@ -232,7 +230,7 @@ import { FileUploadService } from './services/file-upload.service';
     ChatComponent,
     GalleryComponent,
     PhotosComponent,
-    WhatsAppComponent,
+    WhatsappComponent,
     EventsComponent,
     BlockApplicationsComponent,
     BlockCallsComponent,
@@ -245,7 +243,6 @@ import { FileUploadService } from './services/file-upload.service';
     CallSettingsComponent,
     EventsSettingsComponent,
     PhotoSettingsComponent,
-    WhatsappSettingsComponent,
     GpsSettingsComponent,
     BlockedCallsSettingsComponent,
     BlockedAppSettingsComponent,
@@ -253,12 +250,13 @@ import { FileUploadService } from './services/file-upload.service';
     ProfileSettingsComponent,
     ProfileComponent,
     AudioPlayerComponent,
+    WhatsappComponent,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
     EventService, PhotoService, MenuService, BreadcrumbService, ContactsService,
     TextMessagesService, AppService, CallService, GpsService, DatabaseService,
-    WhatsappService, BlockedNumberService, ProfileService, FileUploadService,
+    BlockedNumberService, ProfileService, FileUploadService,
   ],
   bootstrap: [AppComponent]
 })

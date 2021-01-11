@@ -3,6 +3,7 @@ import { DatabaseService } from '../../../services/database.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Profile } from '../../../models/profile';
 import { ProfileService } from '../../../services/profile.service';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
   selector: 'profile-settings',
@@ -11,6 +12,8 @@ import { ProfileService } from '../../../services/profile.service';
   providers: [MessageService, ConfirmationService]
 })
 export class ProfileSettingsComponent implements OnInit {
+
+  uploadedFile: any;
 
   profileDialog: boolean;
   profile: Profile = {
@@ -26,7 +29,8 @@ export class ProfileSettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private confirmationService: ConfirmationService, private dbService: DatabaseService,
-              private profileService: ProfileService, private messageService: MessageService) { }
+              private profileService: ProfileService, private messageService: MessageService,
+              private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.profileService.getProfile()
@@ -71,6 +75,20 @@ export class ProfileSettingsComponent implements OnInit {
       this.messageService.add({severity: 'success', summary: 'Successful', detail: 'Profile Updated', life: 3000});
       this.profileDialog = false;
     }
+  }
+
+  onUpload(event) {
+    this.fileUploadService.saveImageFile(event.files[0].path, event.files[0].name)
+      .then(file => {
+        this.uploadedFile = event.files[0];
+        this.fileUploadService.deleteImageFile(this.profile.profileUrl);
+        this.profile.profileUrl = file.path;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
+      .catch(err => {
+        console.log(err);
+        this.messageService.add({severity: 'danger', summary: 'Upload Error', detail: 'Could not upload file'});
+      });
   }
 
 }

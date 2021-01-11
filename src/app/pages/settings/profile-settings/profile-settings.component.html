@@ -27,9 +27,15 @@
             </div>
 
             <div class="p-field">
-                <label for="profile-url">Profile Url</label>
-                <input type="text" pInputText id="profile-url" [(ngModel)]="profile.profileUrl" required />
-                <small class="p-invalid" *ngIf="submitted && !profile.profileUrl">Profile URL is required.</small>
+                <h5>Profile Pic Upload</h5>
+                <p-fileUpload name="profile-upload" (uploadHandler)="onUpload($event)"
+                              accept="image/*" maxFileSize="1000000" customUpload="true">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFile">
+                            <li>{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
             </div>
 
         </ng-template>

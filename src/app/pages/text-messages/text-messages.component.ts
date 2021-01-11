@@ -35,7 +35,6 @@ export class TextMessagesComponent implements OnInit {
       .then(() => {
         this.loading = false;
         this.initialSelection = this.items[0].value;
-        console.log('Selected Chat', this.selected.chat);
       });
   }
 

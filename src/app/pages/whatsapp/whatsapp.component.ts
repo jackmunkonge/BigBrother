@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { TextMessagesService } from '../../services/text-messages.service';
 import { BreadcrumbService } from '../../app.breadcrumb.service';
 import { SelectItem } from 'primeng/api';
 import { TextMessage } from '../../models/text-message';
-import { TextMessagesService } from '../../services/text-messages.service';
-import { WhatsappService } from '../../services/whatsapp.service';
 
 @Component({
   templateUrl: './whatsapp.component.html',
   styleUrls: ['./whatsapp.component.scss']
 })
-export class WhatsAppComponent implements OnInit {
+export class WhatsappComponent implements OnInit {
 
   loading = true;
 
@@ -18,14 +17,14 @@ export class WhatsAppComponent implements OnInit {
   initialSelection: TextMessage;
   selected: TextMessage;
 
-  constructor(private whatsappService: WhatsappService, private breadcrumbService: BreadcrumbService) {
+  constructor(private textMessagesService: TextMessagesService, private breadcrumbService: BreadcrumbService) {
     this.breadcrumbService.setItems([
       {label: 'WhatsApp'}
     ]);
   }
 
   ngOnInit() {
-    this.whatsappService.getMessages()
+    this.textMessagesService.getWhatsAppMessages()
       .then(data => this.textMessages = data)
       .then(data => this.items = this.getTextSelectItems(data)
         .sort((a,b) => {
@@ -39,7 +38,7 @@ export class WhatsAppComponent implements OnInit {
   }
 
   private getTextSelectItems(textMessages: TextMessage[]): SelectItem<TextMessage>[] {
-    return textMessages.sort((a,b) => (a.id > b.id) ? 1 : -1).map(text => {
+    return textMessages.map(text => {
       return {
         title: text.name,
         value: text
@@ -47,7 +46,8 @@ export class WhatsAppComponent implements OnInit {
     });
   }
 
-  onChange(chat: TextMessage) {
-    this.selected = chat;
+  onChange(textMessage: TextMessage) {
+    this.selected = textMessage;
   }
+
 }

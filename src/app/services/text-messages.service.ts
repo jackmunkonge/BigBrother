@@ -12,4 +12,11 @@ export class TextMessagesService {
       .then(res => res as TextMessage[])
       .then(data => data);
   }
+
+  getWhatsAppMessages() {
+    return this.dbService.getDatabase('whatsapp').find({})
+      .then(res => res as TextMessage[])
+      .then(data => data);
+  }
+
 }
