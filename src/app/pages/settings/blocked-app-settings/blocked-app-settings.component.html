@@ -58,9 +58,15 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="main-image">Image Link</label>
-                    <input type="text" pInputText id="main-image" [(ngModel)]="app.imgUrl" required />
-                    <small class="p-invalid" *ngIf="submitted && !app.imgUrl">Image link is required.</small>
+                    <h5>App Image Link</h5>
+                    <p-fileUpload name="image-link" (uploadHandler)="onUpload($event)"
+                                  accept="image/*" maxFileSize="1000000" customUpload="true">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFile">
+                                <li>{{uploadedFile.name}} - {{uploadedFile.size}} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
                 </div>
 
                 <div class="p-field">

@@ -3,6 +3,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { DatabaseService } from '../../../services/database.service';
 import { App } from '../../../models/app';
 import { AppService } from '../../../services/app.service';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
   selector: 'blocked-app-settings',
@@ -11,6 +12,8 @@ import { AppService } from '../../../services/app.service';
   providers: [MessageService, ConfirmationService]
 })
 export class BlockedAppSettingsComponent implements OnInit {
+
+  uploadedFile: any;
 
   appDialog: boolean;
   apps: App[];
@@ -22,7 +25,8 @@ export class BlockedAppSettingsComponent implements OnInit {
   cols: any[];
 
   constructor(private confirmationService: ConfirmationService, private dbService: DatabaseService,
-              private appService: AppService, private messageService: MessageService) { }
+              private appService: AppService, private messageService: MessageService,
+              private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.appService.getApps()
@@ -55,6 +59,7 @@ export class BlockedAppSettingsComponent implements OnInit {
       accept: () => {
         this.apps = this.apps.filter(val => !this.selectedApps.includes(val));
         this.selectedApps.forEach(app => {
+          this.fileUploadService.deleteImageFile(app.imgUrl);
           this.dbService.getDatabase('apps').remove({id: app.id}, { multi: true });
         });
         this.selectedApps = null;
@@ -75,6 +80,7 @@ export class BlockedAppSettingsComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.apps = this.apps.filter(val => val.id !== app.id);
+        this.fileUploadService.deleteImageFile(app.imgUrl);
         this.dbService.getDatabase('apps').remove({id: app.id}, { multi: true });
         this.app = {};
         this.messageService.add({severity: 'success', summary: 'Successful', detail: 'App Deleted', life: 3000});
@@ -130,5 +136,18 @@ export class BlockedAppSettingsComponent implements OnInit {
     return id;
   }
 
+  onUpload(event) {
+    this.fileUploadService.saveImageFile(event.files[0].path, event.files[0].name)
+      .then(file => {
+        this.uploadedFile = event.files[0];
+        this.fileUploadService.deleteImageFile(this.app.imgUrl);
+        this.app.imgUrl = file.path;
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+      })
+      .catch(err => {
+        console.log(err);
+        this.messageService.add({severity: 'danger', summary: 'Upload Error', detail: 'Could not upload file'});
+      });
+  }
 
 }
