@@ -28,7 +28,13 @@ export class BlockedCallsSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.blockedNumberService.getCalls()
-      .then(data => this.blockedNumbers = data);
+      .then(data => {
+        if (data) {
+          this.blockedNumbers = data;
+        } else {
+          this.blockedNumbers = [];
+        }
+      });
 
     this.cols = [
       {field: 'number', header: 'Restricted Number'},

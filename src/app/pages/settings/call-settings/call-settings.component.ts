@@ -29,7 +29,13 @@ export class CallSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.callService.getCalls()
-      .then(data => this.calls = data);
+      .then(data => {
+        if (data) {
+          this.calls = data;
+        } else {
+          this.calls = [];
+        }
+      });
 
     this.cols = [
       {field: 'name', header: 'Name'},

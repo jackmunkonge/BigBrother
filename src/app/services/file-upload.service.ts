@@ -32,7 +32,9 @@ export class FileUploadService {
   }
 
   deleteAudioFile(path: string) {
-    this.deleteFile(path);
+    if (path && path !== '') {
+      this.deleteFile(path);
+    }
   }
 
   saveImageFile(path: string, name: string): any {
@@ -52,6 +54,8 @@ export class FileUploadService {
   }
 
   deleteImageFile(path: string) {
-    this.deleteFile(path);
+    if (path && path !== '') {
+      this.deleteFile(path);
+    }
   }
 }

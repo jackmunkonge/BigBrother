@@ -26,7 +26,13 @@ export class EventsSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventService.getEvents()
-      .then(data => this.events = data);
+      .then(data => {
+        if (data) {
+          this.events = data;
+        } else {
+          this.events = [];
+        }
+      });
 
     this.cols = [
       {field: 'title', header: 'Title'},

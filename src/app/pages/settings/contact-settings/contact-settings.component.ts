@@ -26,7 +26,13 @@ export class ContactSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactsService.getContacts()
-      .then(data => this.contacts = data);
+      .then(data => {
+        if (data) {
+          this.contacts = data;
+        } else {
+          this.contacts = [];
+        }
+      });
 
     this.cols = [
       {field: 'name', header: 'Name'},

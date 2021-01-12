@@ -31,7 +31,13 @@ export class PhotoSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.photoService.getImages()
-      .then(data => this.photos = data);
+      .then(data => {
+        if (data) {
+          this.photos = data;
+        } else {
+          this.photos = [];
+        }
+      });
 
     this.cols = [
       {field: 'previewImageSrc', header: 'Image Preview'},

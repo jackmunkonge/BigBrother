@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Contact } from '../../../models/contact';
 import { DatabaseService } from '../../../services/database.service';
 import { Gps } from '../../../models/gps';
 import { GpsService } from '../../../services/gps.service';
@@ -27,7 +26,13 @@ export class GpsSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gpsService.getGpsLocations()
-      .then(data => this.gpsLocations = data);
+      .then(data => {
+        if (data) {
+          this.gpsLocations = data;
+        } else {
+          this.gpsLocations = [];
+        }
+      });
 
     this.cols = [
       {field: 'address', header: 'Address'},

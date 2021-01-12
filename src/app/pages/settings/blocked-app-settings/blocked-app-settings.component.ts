@@ -30,7 +30,13 @@ export class BlockedAppSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.getApps()
-      .then(data => this.apps = data);
+      .then(data => {
+        if (data) {
+          this.apps = data;
+        } else {
+          this.apps = [];
+        }
+      });
 
     this.cols = [
       {field: 'imgUrl', header: 'Image Url'},

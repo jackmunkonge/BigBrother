@@ -34,12 +34,24 @@ export class TextMessageSettingsComponent implements OnInit {
     switch (this.type) {
       case 'text':
         this.textMessagesService.getTextMessages()
-          .then(data => this.textMessages = data);
+          .then(data => {
+            if (data) {
+              this.textMessages = data;
+            } else {
+              this.textMessages = [];
+            }
+          });
         this.databaseName = 'textMessages';
         break;
       case 'whatsapp':
         this.textMessagesService.getWhatsAppMessages()
-          .then(data => this.textMessages = data);
+          .then(data => {
+            if (data) {
+              this.textMessages = data;
+            } else {
+              this.textMessages = [];
+            }
+          });
         this.databaseName = 'whatsapp';
         break;
     }
