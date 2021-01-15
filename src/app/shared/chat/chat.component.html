@@ -1,25 +1,22 @@
 <div *ngIf="chat.messages" class="card chat">
     <ul>
         <li *ngFor="let message of chat.messages">
-            <div *ngIf="message.incoming === true" >
-                <div  *ngIf="!!participant && participant !== ''" class="p-text-light" class="p-grid">
-                    <div class="p-col">
-                        <p>{{participant}}</p>
+            <div *ngIf="message.incoming === true" class="p-grid sender">
+                <div class="p-col">
+                    <div *ngIf="!!message.body" class="chat-message">
+                        <p *ngIf="!!participant && participant !== ''" class="p-text-bold">{{participant}}</p>
+                        <p>{{message.body}}</p>
                     </div>
-                </div>
-                <div class="p-grid sender">
-                    <div class="p-col">
-                        <div *ngIf="!!message.body" class="chat-message">{{message.body}}</div>
-                        <div *ngIf="!!message.photo && message.photo.src !== ''" class="chat-message">
-                            <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
-                        </div>
+                    <div *ngIf="!!message.photo && message.photo.src !== ''" class="chat-message">
+                        <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
                     </div>
                 </div>
             </div>
-
             <div *ngIf="message.incoming === false" class="p-grid recipient">
                 <div class="p-col">
-                    <div *ngIf="!!message.body" class="chat-message">{{message.body}}</div>
+                    <div *ngIf="!!message.body" class="chat-message">
+                        <p>{{message.body}}</p>
+                    </div>
                     <div *ngIf="!!message.photo && message.photo.src !== ''" class="chat-message">
                         <img height="200" width="200" [src]="message.photo.src" [alt]="message.id"/>
                     </div>
