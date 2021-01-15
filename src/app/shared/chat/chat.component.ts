@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Chat } from '../../models/chat';
 
 @Component({
@@ -9,6 +9,7 @@ import { Chat } from '../../models/chat';
 export class ChatComponent {
 
   @Input() chat: Chat;
+  @Input() participant: string;
 
   constructor() { }
 }

@@ -5,7 +5,7 @@
     </div>
 
     <div class="p-col-9">
-        <chat [chat]="!!selected ?  selected.chat : initialSelection.chat"></chat>
+        <chat [chat]="!!selected ?  selected.chat : initialSelection.chat" [participant]="!!selected ?  selected.name : initialSelection.name"></chat>
     </div>
 
 </div>
