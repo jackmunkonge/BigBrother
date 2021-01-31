@@ -21,7 +21,7 @@
         <tr>
             <td>{{call.name}}</td>
             <td>{{call.number}}</td>
-            <td>{{call.date | date: 'short': '': 'en'}}</td>
+            <td>{{call.date | date: 'd/M/yy, h:mm a'}}</td>
             <td><h5>{{call.incoming ? 'Incoming' : 'Outgoing'}}</h5></td>
             <td>
                 <audio-player [link]="call.audioLink"></audio-player>

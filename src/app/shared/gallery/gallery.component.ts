@@ -40,13 +40,13 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.photoService.getImages().then(images =>{
-      this.images = images.sort((a,b) => a.dateCreated.getDate() > b.dateCreated.getDate() ? 1 : -1);
+      this.images = images.sort((a,b) => a.dateCreated.getTime() > b.dateCreated.getTime() ? 1 : -1);
     })
   }
 
   getImagesByMonth(month: number) {
     return this.images.filter(image => image.dateCreated.getMonth() === month)
-      .sort((a,b) => a.dateCreated.getDate() > b.dateCreated.getDate() ? 1 : -1);
+      .sort((a,b) => a.dateCreated.getTime() > b.dateCreated.getTime() ? 1 : -1);
   }
 
   imageClick(index: number) {

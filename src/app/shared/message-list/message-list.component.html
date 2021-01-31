@@ -9,7 +9,7 @@
         <div *ngIf="!!text.value.chat.messages[text.value.chat.messages.length - 1].photo && text.value.chat.messages[text.value.chat.messages.length - 1].photo.src !== ''">
             <p class="p-col p-mb-2 p-text-normal"><i [class]="'pi pi-camera'"></i>{{' Photo'}}</p>
         </div>
-        <p class="p-col p-text-right p-text-light">{{text.value.chat.messages[text.value.chat.messages.length - 1].date | date: 'short'}}</p>
+        <p class="p-col p-text-right p-text-light">{{text.value.chat.messages[text.value.chat.messages.length - 1].date | date: 'd/M/yy, h:mm a'}}</p>
       </div>
     </ng-template>
   </p-listbox>

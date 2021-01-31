@@ -21,7 +21,7 @@
     <ng-template pTemplate="caption" let-item>
         <div class="p-d-flex p-jc-between">
             <h4>{{item.title}}</h4>
-            <h6>{{item.dateCreated | date: 'short'}}</h6>
+            <h6>{{item.dateCreated | date: 'd/M/yy, h:mm a'}}</h6>
         </div>
     </ng-template>
 </p-galleria>

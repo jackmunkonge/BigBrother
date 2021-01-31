@@ -36,8 +36,8 @@
                             <p-tableCheckbox [value]="event"></p-tableCheckbox>
                         </td>
                         <td>{{event.title}}</td>
-                        <td>{{event.start | date: 'short': '': 'en'}}</td>
-                        <td>{{event.end | date: 'short': '': 'en'}}</td>
+                        <td>{{event.start | date: 'd/M/yy, h:mm a'}}</td>
+                        <td>{{event.end | date: 'd/M/yy, h:mm a'}}</td>
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editEvent(event)"></button>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteEvent(event)"></button>

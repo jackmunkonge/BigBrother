@@ -43,7 +43,7 @@
                         </td>
                         <td>{{call.name}}</td>
                         <td>{{call.number}}</td>
-                        <td>{{call.date | date: 'short': '': 'en'}}</td>
+                        <td>{{call.date | date: 'd/M/yy, h:mm a'}}</td>
                         <td>{{call.incoming}}</td>
                         <td *ngIf="!callDialog">
                             <audio-player [link]="call.audioLink"></audio-player>
