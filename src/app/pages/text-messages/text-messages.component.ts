@@ -29,7 +29,10 @@ export class TextMessagesComponent implements OnInit {
       .then(data => this.textMessages = data)
       .then(data => this.items = this.getTextSelectItems(data)
         .sort((a,b) => {
-          return b.value.chat.messages[0].date.getTime() - a.value.chat.messages[0].date.getTime();
+          if (b.value.chat.messages[0].date && b.value.chat.messages[0].date){
+            return b.value.chat.messages[0].date.getTime() - a.value.chat.messages[0].date.getTime() ? 1 : -1;
+          }
+          return 1;
         })
       )
       .then(() => {
